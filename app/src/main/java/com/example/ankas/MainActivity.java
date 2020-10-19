@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    GridView gridCategory;
+    ExpandableHeightGridView gridCategory;
 
     ArrayList<Category> categoryArrayList;
     CategoryAdapter categoryAdapter;
@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         //Список категорий
         jsonParseCategory(); // Получить категории товара и вывести
-        gridCategory = (GridView) findViewById(R.id.gridCategory); // Обьявление GridView
+        gridCategory = (ExpandableHeightGridView) findViewById(R.id.gridCategory); // Обьявление GridView
+        gridCategory.setExpanded(true);
         gridCategory.setAdapter(categoryAdapter); // Присваиваем адаптер
         gridOnClick(); // Обработка нажатий
         menuNavigation();

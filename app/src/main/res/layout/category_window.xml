@@ -26,21 +26,33 @@
             android:layout_below="@+id/imageLogo"
             android:background="@color/colorGreen" />
     </RelativeLayout>
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/layoutBottom"
-        android:layout_below="@+id/layoutTop"
-        android:background="@color/colorLightGrey">
-                <GridView
-                    android:id="@+id/gridCategory"
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:numColumns="3"
-                    android:scrollbars="none" />
-    </RelativeLayout>
+        android:layout_below="@+id/layoutTop">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorLightGrey">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGreen"
+                android:textSize="20sp"
+                android:text="Категории"/>
+            <com.example.ankas.ExpandableHeightGridView
+                android:id="@+id/gridCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:numColumns="3"
+                android:isScrollContainer="false"
+                android:stretchMode="columnWidth"
+                android:scrollbars="none" />
+        </LinearLayout>
+    </ScrollView>
 
     <RelativeLayout
         android:id="@+id/layoutBottom"
