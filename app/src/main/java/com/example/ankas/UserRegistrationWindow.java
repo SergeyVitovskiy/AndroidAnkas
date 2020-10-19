@@ -22,11 +22,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 public class UserRegistrationWindow extends AppCompatActivity {
 
     RequestQueue requestQueue;
@@ -131,11 +126,11 @@ public class UserRegistrationWindow extends AppCompatActivity {
 
     // Меню навигации
     private void menuNavigation() {
-        LinearLayout layoutShop, layoutFavorites, layoutBasket,layoutHuman;
+        LinearLayout layoutShop, layoutMenuBrash, layoutBasket,layoutHuman;
         layoutShop = (LinearLayout) findViewById(R.id.layoutShop); // Категории
-        layoutFavorites = (LinearLayout) findViewById(R.id.layoutFavorites); // Избранное
         layoutBasket = (LinearLayout) findViewById(R.id.layoutBasket); // Корзина
         layoutHuman = (LinearLayout) findViewById(R.id.layoutHuman); // Пользователь
+        layoutMenuBrash = (LinearLayout) findViewById(R.id.layoutMenuBrash); // Меню
 
         layoutShop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +143,13 @@ public class UserRegistrationWindow extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserRegistrationWindow.this, BasketWindow.class);
+                startActivity(intent);
+            }
+        });
+        layoutMenuBrash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserRegistrationWindow.this, MenuBrashWindow.class);
                 startActivity(intent);
             }
         });

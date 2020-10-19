@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/layoutTop"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorWhite">
+
+            <ImageView
+                android:id="@+id/imageLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="2dp"
+                app:srcCompat="@drawable/logo" />
+
+            <View
+                android:id="@+id/viewLinear"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/layoutBottom"
+            android:layout_below="@+id/layoutTop"
+            android:background="@color/colorLightGrey">
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="@color/colorGreen"
+                android:textStyle="bold"
+                android:text="Полезная информация"/>
+            <View
+                android:id="@+id/viewLinear2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/text1"
+                android:background="@color/colorGreen" />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/layoutInformation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/viewLinear2"
+                    android:layout_marginTop="0dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/layoutAdress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite">
+                        <TextView
+                            android:id="@+id/text7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="26sp"
+                            android:textColor="@color/colorGreen"
+                            android:textStyle="bold"
+                            android:text="Адрес в городе Челябинск"/>
+
+                        <TextView
+                            android:id="@+id/text4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/text7"
+                            android:paddingLeft="5dp"
+                            android:layout_marginTop="0dp"
+                            android:textSize="16sp"
+                            android:text="ул. Газизуллина, 2Б\n Склад, Офис, Пункт выдачи\nРежим работы: ПН-ПТ с 9:00 до 18:00" />
+
+                        <ImageView
+                            android:id="@+id/imageMaps"
+                            android:layout_width="wrap_content"
+                            android:layout_height="150dp"
+                            android:layout_below="@+id/text4"
+                            android:layout_marginTop="0dp"
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/maps" />
+
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/text1"
+                        android:background="@color/colorGreen" />
+                    <RelativeLayout
+                        android:id="@+id/layoutSalesDepartment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite">
+                        <TextView
+                            android:id="@+id/text8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="26sp"
+                            android:textColor="@color/colorGreen"
+                            android:textStyle="bold"
+                            android:text="Отдел продаж"/>
+
+                        <TextView
+                            android:id="@+id/text9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="5dp"
+                            android:layout_below="@+id/text8"
+                            android:layout_marginTop="0dp"
+                            android:textSize="16sp"
+                            android:text="Режим работы: ПН-ПТ с 9:00 до 20:00\n☎ +7 (351) 751-40-35 - Горелки и запчати\n☎ +7 (351) 751-40-12 - Оборудование для АЗС, нефтебаз, маслосменое\n☎ +7 (351) 750-18-86 - Оборудование для автосалона; Станки; Строительная техника и оборудование\n" />
+                        <TextView
+                            android:id="@+id/text10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="5dp"
+                            android:layout_below="@+id/text9"
+                            android:layout_marginTop="0dp"
+                            android:textSize="16sp"
+                            android:text="✉ market@ankas.ru - Горелки и запчасти\n✉ nsale@ankas.ru - Строительная техника и оборудование\n✉ zakasz@ankas.ru - Оборудование для автосалона@\n✉ shop@ankas.ru - Станки" />
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/text1"
+                        android:background="@color/colorGreen" />
+                    <RelativeLayout
+                        android:id="@+id/layoutRequisites"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite">
+                        <TextView
+                            android:id="@+id/text11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="26sp"
+                            android:textColor="@color/colorGreen"
+                            android:textStyle="bold"
+                            android:text="Наши реквизиты"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="5dp"
+                            android:layout_below="@+id/text11"
+                            android:layout_marginTop="0dp"
+                            android:textSize="16sp"
+                            android:text="Наименование: ООО «АНКАС»\nЮридический адрес:45411, Челябинск обл. г. Челяюинск, ул. Газизулина 2Б, офис 20\nАдрес в г.Челябинск ул.Газизулина, 2Б\nИНН: 7451376055\nКПП: 745101001\nОГРН: 1147451013819\nДиректор: Черпаков Алексей Владимирович"/>
+                    </RelativeLayout>
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layoutBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorWhite">
+            <View
+                android:id="@+id/viewLinear1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorGreen" />
+
+            <LinearLayout
+                android:id="@+id/layoutNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/viewLinear1">
+
+                <LinearLayout
+                    android:id="@+id/layoutShop"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        app:srcCompat="@drawable/shop" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/layoutBasket"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        app:srcCompat="@drawable/basket" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutHuman"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/human" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/layoutMenuBrash"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/rounded">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/menu_bars" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+</RelativeLayout>

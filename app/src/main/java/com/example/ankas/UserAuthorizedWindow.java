@@ -73,10 +73,11 @@ public class UserAuthorizedWindow extends AppCompatActivity {
     }
     // Меню навигации
     private void menuNavigation() {
-        LinearLayout layoutShop, layoutFavorites, layoutBasket,layoutHuman;
+        LinearLayout layoutShop, layoutMenuBrash, layoutBasket,layoutHuman;
         layoutShop = (LinearLayout) findViewById(R.id.layoutShop); // Категории
-        layoutFavorites = (LinearLayout) findViewById(R.id.layoutFavorites); // Избранное
         layoutBasket = (LinearLayout) findViewById(R.id.layoutBasket); // Корзина
+        layoutHuman = (LinearLayout) findViewById(R.id.layoutHuman); // Пользователь
+        layoutMenuBrash = (LinearLayout) findViewById(R.id.layoutMenuBrash); // Меню
 
         layoutShop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +90,13 @@ public class UserAuthorizedWindow extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserAuthorizedWindow.this, BasketWindow.class);
+                startActivity(intent);
+            }
+        });
+        layoutMenuBrash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserAuthorizedWindow.this, MenuBrashWindow.class);
                 startActivity(intent);
             }
         });

@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -52,11 +51,11 @@ public class SubcategoryWindow extends AppCompatActivity {
 
     // Меню навигации
     private void menuNavigation() {
-        LinearLayout layoutShop, layoutFavorites, layoutBasket,layoutHuman;
+        LinearLayout layoutShop, layoutMenuBrash, layoutBasket,layoutHuman;
         layoutShop = (LinearLayout) findViewById(R.id.layoutShop); // Категории
-        layoutFavorites = (LinearLayout) findViewById(R.id.layoutFavorites); // Избранное
         layoutBasket = (LinearLayout) findViewById(R.id.layoutBasket); // Корзина
         layoutHuman = (LinearLayout) findViewById(R.id.layoutHuman); // Пользователь
+        layoutMenuBrash = (LinearLayout) findViewById(R.id.layoutMenuBrash); // Меню
 
         layoutShop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +75,13 @@ public class SubcategoryWindow extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SubcategoryWindow.this, UserAuthorizationWindow.class);
+                startActivity(intent);
+            }
+        });
+        layoutMenuBrash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SubcategoryWindow.this, MenuBrashWindow.class);
                 startActivity(intent);
             }
         });

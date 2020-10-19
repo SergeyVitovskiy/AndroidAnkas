@@ -17,10 +17,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.ankas.Adapter.CategoryAdapter;
-import com.example.ankas.Adapter.ProductAdapter;
 import com.example.ankas.Adapter.ProductBasketAdapter;
-import com.example.ankas.Class.Category;
 import com.example.ankas.Class.ProductBasket;
 import com.example.ankas.Class.User;
 
@@ -125,11 +122,11 @@ public class BasketWindow extends AppCompatActivity {
     }
 
     private void menuNavigation() {
-        LinearLayout layoutShop, layoutFavorites, layoutBasket,layoutHuman;
+        LinearLayout layoutShop, layoutMenuBrash, layoutBasket,layoutHuman;
         layoutShop = (LinearLayout) findViewById(R.id.layoutShop); // Категории
-        layoutFavorites = (LinearLayout) findViewById(R.id.layoutFavorites); // Избранное
         layoutBasket = (LinearLayout) findViewById(R.id.layoutBasket); // Корзина
         layoutHuman = (LinearLayout) findViewById(R.id.layoutHuman); // Пользователь
+        layoutMenuBrash = (LinearLayout) findViewById(R.id.layoutMenuBrash); // Меню
 
         layoutShop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +145,13 @@ public class BasketWindow extends AppCompatActivity {
                     Intent intent = new Intent(BasketWindow.this, UserAuthorizedWindow.class);
                     startActivity(intent);
                 }
+            }
+        });
+        layoutMenuBrash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BasketWindow.this, MenuBrashWindow.class);
+                startActivity(intent);
             }
         });
     }

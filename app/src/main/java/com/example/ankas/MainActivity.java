@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
     }
     // Меню навигации
     private void menuNavigation() {
-        LinearLayout layoutShop, layoutFavorites, layoutBasket,layoutHuman;
+        LinearLayout layoutShop, layoutMenuBrash, layoutBasket,layoutHuman;
         layoutShop = (LinearLayout) findViewById(R.id.layoutShop); // Категории
-        layoutFavorites = (LinearLayout) findViewById(R.id.layoutFavorites); // Избранное
         layoutBasket = (LinearLayout) findViewById(R.id.layoutBasket); // Корзина
         layoutHuman = (LinearLayout) findViewById(R.id.layoutHuman); // Пользователь
+        layoutMenuBrash = (LinearLayout) findViewById(R.id.layoutMenuBrash); // Меню
 
         layoutBasket.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, UserAuthorizedWindow.class);
                     startActivity(intent);
                 }
+            }
+        });
+        layoutMenuBrash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MenuBrashWindow.class);
+                startActivity(intent);
             }
         });
     }

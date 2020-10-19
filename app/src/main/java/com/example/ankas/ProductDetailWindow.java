@@ -17,20 +17,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.ankas.Class.Product;
 import com.example.ankas.Class.User;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class ProductDetailWindow extends AppCompatActivity {
 
@@ -126,11 +118,11 @@ public class ProductDetailWindow extends AppCompatActivity {
     }
     // Меню навигации
     private void menuNavigation() {
-        LinearLayout layoutShop, layoutFavorites, layoutBasket,layoutHuman;
+        LinearLayout layoutShop, layoutMenuBrash, layoutBasket,layoutHuman;
         layoutShop = (LinearLayout) findViewById(R.id.layoutShop); // Категории
-        layoutFavorites = (LinearLayout) findViewById(R.id.layoutFavorites); // Избранное
         layoutBasket = (LinearLayout) findViewById(R.id.layoutBasket); // Корзина
         layoutHuman = (LinearLayout) findViewById(R.id.layoutHuman); // Пользователь
+        layoutMenuBrash = (LinearLayout) findViewById(R.id.layoutMenuBrash); // Меню
 
         layoutShop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +148,13 @@ public class ProductDetailWindow extends AppCompatActivity {
                     Intent intent = new Intent(ProductDetailWindow.this, UserAuthorizedWindow.class);
                     startActivity(intent);
                 }
+            }
+        });
+        layoutMenuBrash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProductDetailWindow.this, MenuBrashWindow.class);
+                startActivity(intent);
             }
         });
     }
