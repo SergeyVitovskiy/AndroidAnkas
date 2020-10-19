@@ -44,6 +44,7 @@ public class ProductDetailWindow extends AppCompatActivity {
         checkBasket(); // Проверка коризны
         AddBasket(); // Добавление в корзину
         menuNavigation(); // Навигация
+
     }
 
     private void checkBasket() {
@@ -175,7 +176,7 @@ public class ProductDetailWindow extends AppCompatActivity {
         textExpandDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (textExpandDescription.getText() == "Развернуть описание...")
+                if (textExpandDescription.getText().toString().equals("Развернуть описание..."))
                 {
                     textExpandDescription.setText("Свернуть описание...");
                     textDescription.setMaxLines(9999);
@@ -191,7 +192,7 @@ public class ProductDetailWindow extends AppCompatActivity {
         textExpandFeatures.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (textExpandFeatures.getText() == "Развернуть характеристики...")
+                if (textExpandFeatures.getText().toString().equals("Развернуть характеристики..."))
                 {
                     textExpandFeatures.setText("Свернуть характеристики...");
                     textSpecifications.setMaxLines(9999);
