@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Ankas</string>
+    <string name="Я_не_помню_пароль"><u>Я не помню логин или пароль</u></string>
+    <string name="Создать_аккаунт_если_"><u>Создать аккаунт если его еще нет</u></string>
+    <string name="У_меня_уже_ес"><u>У меня уже есть аккаунт</u></string>
+</resources>
