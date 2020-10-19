@@ -44,81 +44,133 @@
                 <ImageView
                     android:id="@+id/imageUser"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="200dp"
                     android:background="@color/colorWhite"
                     app:srcCompat="@drawable/human" />
 
                 <TextView
                     android:id="@+id/textNameSurname"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/imageUser"
                     android:padding="5dp"
                     android:text="Фамилия Имя"
-                    android:background="#FFFFFF"
+                    android:background="#70FFFFFF"
                     android:textColor="@color/colorBlack"
                     android:textStyle="bold"
                     android:textSize="30sp" />
-
-                <TextView
-                    android:id="@+id/textMyOrder"
+                <LinearLayout
+                    android:id="@+id/layoutUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_margin="2dp"
                     android:layout_below="@+id/imageUser"
-                    android:background="@color/colorWhite"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="22sp"
-                    android:text="Мои заказы"/>
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/textMyOrder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="2dp"
 
-                <TextView
-                    android:id="@+id/textPromoCode"
+                        android:background="@color/colorWhite"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="22sp"
+                        android:text="Мои заказы"/>
+
+                    <TextView
+                        android:id="@+id/textPromoCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="2dp"
+                        android:background="@color/colorWhite"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="22sp"
+                        android:text="Промокод"/>
+
+                    <TextView
+                        android:id="@+id/textSupportService"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="2dp"
+                        android:background="@color/colorWhite"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="22sp"
+                        android:text="Служба поддержки"/>
+
+                    <TextView
+                        android:id="@+id/textAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="2dp"
+                        android:background="@color/colorWhite"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="22sp"
+                        android:text="Аккаунт"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/layoutAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_below="@+id/textMyOrder"
-                    android:background="@color/colorWhite"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="22sp"
-                    android:text="Промокод"/>
+                    android:layout_below="@+id/layoutUser"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="2dp"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textSupportService"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_margin="2dp"
-                    android:layout_below="@+id/textPromoCode"
-                    android:background="@color/colorWhite"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="22sp"
-                    android:text="Служба поддержки"/>
+                    <View
+                        android:id="@+id/viewLinear4"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGreen" />
 
-                <TextView
-                    android:id="@+id/textAccount"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Панель администратора"
+                        android:textSize="24sp"
+                        android:textColor="@color/colorGreen"/>
+                    <View
+                        android:id="@+id/viewLinear2"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGreen" />
+
+                    <TextView
+                        android:id="@+id/textAdminOrders"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="2dp"
+                        android:layout_below="@+id/textSupportService"
+                        android:background="@color/colorWhite"
+                        android:text="Посмотреть заказы"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="22sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/viewLinear3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_margin="2dp"
-                    android:layout_below="@+id/textSupportService"
-                    android:background="@color/colorWhite"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="22sp"
-                    android:text="Аккаунт"/>
+                    android:layout_below="@+id/layoutAdmin"
+                    android:layout_height="2dp"
+                    android:background="@color/colorGreen" />
                 <TextView
                     android:id="@+id/textExit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:layout_margin="2dp"
-                    android:layout_below="@+id/textAccount"
+                    android:layout_below="@+id/viewLinear3"
                     android:background="@color/colorWhite"
                     android:textColor="#9A0101"
                     android:gravity="center"
                     android:textSize="22sp"
                     android:text="Выйти"/>
+
             </RelativeLayout>
         </ScrollView>
     </RelativeLayout>
@@ -147,7 +199,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/rounded"
                 android:gravity="center">
 
                 <ImageView
@@ -193,7 +244,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:gravity="center"
+                android:background="@drawable/rounded">
 
                 <ImageView
                     android:layout_width="wrap_content"

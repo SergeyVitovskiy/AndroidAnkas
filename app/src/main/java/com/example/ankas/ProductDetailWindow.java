@@ -56,7 +56,6 @@ public class ProductDetailWindow extends AppCompatActivity {
 
     private void checkBasket() {
         String url = "http://anndroidankas.h1n.ru/php/basket_product_info.php?user_login=" + User.login + "&product_id=" + idSelectProductDetail;
-        Toast.makeText(getApplicationContext(), "url  " + url, Toast.LENGTH_SHORT).show();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -66,7 +65,6 @@ public class ProductDetailWindow extends AppCompatActivity {
                             jsonArray = response.getJSONArray("BASKET_PRODUCT"); // Массив данных
                             JSONObject object = jsonArray.getJSONObject(0); // Получение первого массива
                             int quantity = object.getInt("quantity");
-                            Toast.makeText(getApplicationContext(), "quantity " + quantity, Toast.LENGTH_SHORT).show();
                             if (quantity >= 1){
                                 buttonBuy.setText("В корзине");
                             } else {
@@ -137,7 +135,7 @@ public class ProductDetailWindow extends AppCompatActivity {
         layoutShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProductDetailWindow.this, SubcategoryWindow.class);
+                Intent intent = new Intent(ProductDetailWindow.this, ProductWindow.class);
                 startActivity(intent);
             }
         });

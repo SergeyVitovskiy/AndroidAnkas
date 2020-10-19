@@ -95,7 +95,7 @@ public class ProductBasketAdapter extends BaseAdapter {
         }
         final ProductBasket productBasket = productBasketArrayList.get(position);
         holder.textTitle.setText(productBasket.getTitle());
-        holder.textPrice.setText(productBasket.getPrice());
+        holder.textPrice.setText(productBasket.getPrice() + " ₽");
         holder.textDescription.setText(productBasket.getDescription());
         holder.textManufacturer.setText(productBasket.getBrand());
         holder.textQuantityBasket.setText("" + productBasket.getQuantity_basket()); // Кол-во заказываемых товаров
@@ -219,7 +219,7 @@ public class ProductBasketAdapter extends BaseAdapter {
             for (int i = 0; i < productBasketArrayList.size(); i++) {
                 BasketWindow.orderAmount += productBasketArrayList.get(i).getQuantity_basket() * Double.parseDouble(productBasketArrayList.get(i).getPrice()); // Сумма заказа
             }
-            BasketWindow.textOrderAmount.setText("Сумма заказа: " + BasketWindow.orderAmount + " ₽");
+            BasketWindow.textOrderAmount.setText("Сумма: " + String.format("%.0f",BasketWindow.orderAmount) + " ₽");
         }
     }
 }

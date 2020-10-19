@@ -95,7 +95,6 @@ public class SubcategoryWindow extends AppCompatActivity {
                 ProductWindow.idSelectSubcategory = SubcategoryAdapter.subcategoryArrayList.get(position).getId();
                 Intent intent = new Intent(SubcategoryWindow.this, ProductWindow.class);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "id " + SubcategoryAdapter.subcategoryArrayList.get(position).getId(), Toast.LENGTH_SHORT).show();
             }
         });
     }

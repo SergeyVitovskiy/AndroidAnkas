@@ -30,7 +30,7 @@ import java.net.URL;
 public class UserRegistrationWindow extends AppCompatActivity {
 
     RequestQueue requestQueue;
-    TextView textLogin, textEmail,textPassword,textPasswordTuo;
+    TextView textLogin, textEmail,textPassword,textPasswordTuo,textName,textSurname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,31 +42,88 @@ public class UserRegistrationWindow extends AppCompatActivity {
         textEmail = (TextView) findViewById(R.id.textEmail);
         textPassword = (TextView) findViewById(R.id.textPassword);
         textPasswordTuo = (TextView) findViewById(R.id.textPasswordTuo);
+        textName = (TextView) findViewById(R.id.textName);
+        textSurname = (TextView) findViewById(R.id.textSurname);
         registration();
         menuNavigation(); // Меню навигации
     }
-
+    // Обработка кнопки регистрация
     private void registration() {
-
-
         final Button buttonEnter = (Button) findViewById(R.id.buttonEnter);
 
         buttonEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                URL url = null;
-                try {
-                    url = new URL("http://anndroidankas.h1n.ru/php/user_registration.php?email=" + textEmail.getText() + "&login=" + textLogin.getText() + "&password=" + textPassword.getText());
-                    HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-                    if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                        // Успешно
-                    } else {
-                        // Ошибка в отправлении
+                if (!textLogin.getText().toString().equals("")) {
+                    if (!textEmail.getText().toString().equals("")) {
+                        if (!textPassword.getText().toString().equals("") && !textPasswordTuo.getText().toString().equals("")) {
+                            if (textPassword.getText().toString().equals(textPasswordTuo.getText().toString())) {
+                                String url = "http://anndroidankas.h1n.ru/php/user_registration.php?login=" + textLogin.getText().toString() + "&password=" + textPassword.getText().toString() +
+                                        "&email=" + textEmail.getText().toString() + "&name=" + textName.getText().toString() + "&surname=" + textSurname.getText().toString(); // GET запрос
+                                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                                        new Response.Listener<JSONObject>() {
+                                            @Override
+                                            public void onResponse(JSONObject response) {
+                                                try {
+                                                    JSONArray jsonArray = response.getJSONArray("ANSWER"); // Массив данных
+                                                    JSONObject object = jsonArray.getJSONObject(0); // Получение первого массива
+                                                    String answer = object.getString("answer");
+                                                    Toast.makeText(getApplicationContext(), answer, Toast.LENGTH_SHORT).show(); // Сообщение полученное с сервера
+                                                    if (!answer.equals("Пользователь с таким логином уже есть!")) {
+                                                        //Получение данных о пользоватле
+                                                        String url = "http://anndroidankas.h1n.ru/php/user.php?login=" + textLogin.getText() + "&password=" + textPassword.getText();
+                                                        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                                                                new Response.Listener<JSONObject>() {
+                                                                    @Override
+                                                                    public void onResponse(JSONObject response) {
+                                                                        try {
+                                                                            JSONArray jsonArray = response.getJSONArray("USER");
+                                                                            JSONObject object = jsonArray.getJSONObject(0);
+                                                                            User.login = object.getString("login");
+                                                                            User.password = object.getString("password");
+                                                                            User.group = object.getString("groups");
+                                                                            User.image_url = object.getString("image_url");
+                                                                            User.surname = object.getString("surname");
+                                                                            User.name = object.getString("name");
+                                                                            User.email = object.getString("email");
+                                                                            User.telephone = object.getString("telephone");
+                                                                            //После получения
+                                                                            Intent intent = new Intent(UserRegistrationWindow.this, UserAuthorizedWindow.class);
+                                                                            startActivity(intent);
+                                                                        } catch (JSONException e) {
+                                                                            e.printStackTrace();
+                                                                        }
+                                                                    }
+                                                                }, new Response.ErrorListener() {
+                                                            @Override
+                                                            public void onErrorResponse(VolleyError error) {
+                                                                error.printStackTrace();
+                                                            }
+                                                        });
+                                                        requestQueue.add(request);
+                                                    }
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        error.printStackTrace();
+                                    }
+                                });
+                                requestQueue.add(request);
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Пароли не совпадают!", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Вы не заполнили поле с паролем!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else{
+                        Toast.makeText(getApplicationContext(), "Вы не заполнили поле E-mail!", Toast.LENGTH_SHORT).show();
                     }
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Вы не заполнили поле Логин!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -103,22 +160,3 @@ public class UserRegistrationWindow extends AppCompatActivity {
         });
     }
 }
-
-
-
-                /* if (textEmail.getText() != ""){
-                    if (textLogin.getText() != ""){
-                        if (textPassword.getText() != "" && textPasswordTuo.getText() != ""){
-                            if (textPassword.getText() == textPasswordTuo.getText()){
-                                       } else {
-                                Toast.makeText(getApplicationContext(), "Пароли не совпадают" + textPassword.getText() +",,," + textPasswordTuo.getText(), Toast.LENGTH_SHORT).show();
-                            }
-                        }else {
-                            Toast.makeText(getApplicationContext(), "Поле с паролем пустое", Toast.LENGTH_SHORT).show();
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Поле логин пустое", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Поле с Email пустое", Toast.LENGTH_SHORT).show();
-                }*/

@@ -54,27 +54,21 @@ public class UserAuthorizationWindow extends AppCompatActivity {
                             public void onResponse(JSONObject response) {
                                 try {
                                     JSONArray jsonArray = response.getJSONArray("USER");
-                                    for (int i = 0; i < jsonArray.length();i++){
-                                        JSONObject object = jsonArray.getJSONObject(i);
-                                        User.login = object.getString("login");
-                                        User.password = object.getString("password");
-                                        User.group = object.getString("groups");
-                                        User.image_url = object.getString("image_url");
-                                        User.surname = object.getString("surname");
-                                        User.name = object.getString("name");
-                                        User.email = object.getString("email");
-                                        User.telephone = object.getString("telephone");
-                                    }
+                                    JSONObject object = jsonArray.getJSONObject(0);
+                                    User.login = object.getString("login");
+                                    User.password = object.getString("password");
+                                    User.group = object.getString("groups");
+                                    User.image_url = object.getString("image_url");
+                                    User.surname = object.getString("surname");
+                                    User.name = object.getString("name");
+                                    User.email = object.getString("email");
+                                    User.telephone = object.getString("telephone");
                                     //После получения
-                                    if(User.login != "Null" && User.password != "Null"){
-                                        Intent intent = new Intent(UserAuthorizationWindow.this, UserAuthorizedWindow.class);
-                                        startActivity(intent);
-                                    }
-                                    else { // Если неверный логин или пароль
-                                        Toast.makeText(getApplicationContext(), "Неверный логин или пароль!", Toast.LENGTH_SHORT).show();
-                                    }
+                                    Intent intent = new Intent(UserAuthorizationWindow.this, UserAuthorizedWindow.class);
+                                    startActivity(intent);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
+                                    Toast.makeText(getApplicationContext(), "Неверный логин или пароль!", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }, new Response.ErrorListener() {
