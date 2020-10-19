@@ -63,13 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        layoutFavorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, FavoriteWindow.class);
-                startActivity(intent);
-            }
-        });
         // Переход в профиль или авторизацию
         layoutHuman.setOnClickListener(new View.OnClickListener() {
             @Override

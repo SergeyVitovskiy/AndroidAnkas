@@ -144,13 +144,6 @@ public class UserRegistrationWindow extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        layoutFavorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UserRegistrationWindow.this, FavoriteWindow.class);
-                startActivity(intent);
-            }
-        });
         layoutBasket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

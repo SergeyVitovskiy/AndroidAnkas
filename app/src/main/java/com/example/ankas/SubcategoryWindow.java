@@ -72,13 +72,6 @@ public class SubcategoryWindow extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        layoutFavorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SubcategoryWindow.this, FavoriteWindow.class);
-                startActivity(intent);
-            }
-        });
         layoutHuman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

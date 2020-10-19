@@ -8,11 +8,23 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.ankas.Class.Category;
 import com.example.ankas.Class.Product;
+import com.example.ankas.Class.User;
 import com.example.ankas.R;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -49,6 +61,8 @@ public class ProductAdapter extends BaseAdapter {
         TextView textDescription;
         TextView textManufacturer;
         TextView textAvailability;
+
+         ImageView imageFavorite;
     }
 
     @Override
@@ -65,6 +79,7 @@ public class ProductAdapter extends BaseAdapter {
             holder.textDescription = (TextView) row.findViewById(R.id.textDescription);
             holder.textManufacturer = (TextView) row.findViewById(R.id.textManufacturer);
             holder.textAvailability = (TextView) row.findViewById(R.id.textAvailability);
+            holder.imageFavorite = (ImageView) row.findViewById(R.id.imageFavorite);
             row.setTag(holder);
         } else {
             holder = (ProductAdapter.ViewHolder) row.getTag();

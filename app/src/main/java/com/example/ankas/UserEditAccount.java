@@ -128,13 +128,6 @@ public class UserEditAccount extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        layoutFavorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UserEditAccount.this, FavoriteWindow.class);
-                startActivity(intent);
-            }
-        });
         layoutBasket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

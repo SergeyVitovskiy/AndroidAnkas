@@ -24,6 +24,13 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp" />
 
+        <ImageView
+            android:id="@+id/imageFavorite"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="5dp"
+            app:srcCompat="@drawable/favourites" />
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="98dp"

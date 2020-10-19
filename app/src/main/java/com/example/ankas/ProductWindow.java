@@ -84,13 +84,6 @@ public class ProductWindow extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        layoutFavorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProductWindow.this, FavoriteWindow.class);
-                startActivity(intent);
-            }
-        });
         layoutHuman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
