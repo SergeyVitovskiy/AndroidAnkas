@@ -37,11 +37,19 @@
             android:orientation="vertical"
             android:background="@color/colorLightGrey">
             <TextView
+                android:id="@+id/textNameWindow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorGreen"
+                android:background="@color/colorWhite"
                 android:textSize="20sp"
-                android:text="Категории"/>
+                android:paddingLeft="5dp"
+                android:text="Категории  товаров"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
             <com.example.ankas.ExpandableHeightGridView
                 android:id="@+id/gridCategory"
                 android:layout_width="match_parent"
@@ -51,6 +59,23 @@
                 android:isScrollContainer="false"
                 android:stretchMode="columnWidth"
                 android:scrollbars="none" />
+            <TextView
+                android:id="@+id/textLoading"
+                android:layout_width="match_parent"
+                android:layout_height="700dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Загрузка..."/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:text="  На официальном сайте компании АНКАС, вы можете приобрести любое оборудование, представленное в каталоге компании. Для каждого товара у нас выгодные цены с максимально точным и подробным описанием, а также полными характеристиками и собственными фотографиями."/>
         </LinearLayout>
     </ScrollView>
 

@@ -63,40 +63,37 @@ public class UserEditAccount extends AppCompatActivity {
                                     JSONObject object = jsonArray.getJSONObject(0); // Получение первого массива
                                     String answer = object.getString("answer");
                                     Toast.makeText(getApplicationContext(), answer, Toast.LENGTH_SHORT).show(); // Сообщение полученное с сервера
-                                    //Получение новых данных о пользоватле
-                                    if (!answer.equals("Пользователь с таким логином уже есть! Придумайте другой.")) {
-                                        //Получение данных о пользоватле
-                                        String url = "http://anndroidankas.h1n.ru/php/user.php?login=" + textLogin.getText() + "&password=" + textPassword.getText();
-                                        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                                                new Response.Listener<JSONObject>() {
-                                                    @Override
-                                                    public void onResponse(JSONObject response) {
-                                                        try {
-                                                            JSONArray jsonArray = response.getJSONArray("USER");
-                                                            JSONObject object = jsonArray.getJSONObject(0);
-                                                            User.login = object.getString("login");
-                                                            User.password = object.getString("password");
-                                                            User.group = object.getString("groups");
-                                                            User.image_url = object.getString("image_url");
-                                                            User.surname = object.getString("surname");
-                                                            User.name = object.getString("name");
-                                                            User.email = object.getString("email");
-                                                            User.telephone = object.getString("telephone");
-                                                            //После получения
-                                                            Intent intent = new Intent(UserEditAccount.this, UserAuthorizedWindow.class);
-                                                            startActivity(intent);
-                                                        } catch (JSONException e) {
-                                                            e.printStackTrace();
-                                                        }
+                                    //Получение данных о пользоватле
+                                    String url = "http://anndroidankas.h1n.ru/php/user.php?login=" + textLogin.getText() + "&password=" + textPassword.getText();
+                                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                                            new Response.Listener<JSONObject>() {
+                                                @Override
+                                                public void onResponse(JSONObject response) {
+                                                    try {
+                                                        JSONArray jsonArray = response.getJSONArray("USER");
+                                                        JSONObject object = jsonArray.getJSONObject(0);
+                                                        User.login = object.getString("login");
+                                                        User.password = object.getString("password");
+                                                        User.group = object.getString("groups");
+                                                        User.image_url = object.getString("image_url");
+                                                        User.surname = object.getString("surname");
+                                                        User.name = object.getString("name");
+                                                        User.email = object.getString("email");
+                                                        User.telephone = object.getString("telephone");
+                                                        //После получения
+                                                        Intent intent = new Intent(UserEditAccount.this, UserAuthorizedWindow.class);
+                                                        startActivity(intent);
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
                                                     }
-                                                }, new Response.ErrorListener() {
-                                            @Override
-                                            public void onErrorResponse(VolleyError error) {
-                                                error.printStackTrace();
-                                            }
-                                        });
-                                        requestQueue.add(request);
-                                    }
+                                                }
+                                            }, new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            error.printStackTrace();
+                                        }
+                                    });
+                                    requestQueue.add(request);
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

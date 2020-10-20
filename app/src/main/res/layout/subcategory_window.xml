@@ -27,22 +27,58 @@
             android:background="@color/colorGreen" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@+id/layoutBottom"
-        android:layout_below="@+id/layoutTop"
-        android:background="@color/colorLightGrey">
-
-        <GridView
-            android:id="@+id/gridSubcategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:scrollbars="none"
-            android:numColumns="3"
-            />
-    </RelativeLayout>
+        android:layout_below="@+id/layoutTop">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorLightGrey">
+            <TextView
+                android:id="@+id/textNameWindow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGreen"
+                android:background="@color/colorWhite"
+                android:textSize="20sp"
+                android:paddingLeft="5dp"
+                android:text=""/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <com.example.ankas.ExpandableHeightGridView
+                android:id="@+id/gridSubcategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:numColumns="3"
+                android:isScrollContainer="false"
+                android:stretchMode="columnWidth"
+                android:scrollbars="none" />
+            <TextView
+                android:id="@+id/textLoading"
+                android:layout_width="match_parent"
+                android:layout_height="700dp"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="Загрузка..."/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:text="  На официальном сайте компании АНКАС, вы можете приобрести любое оборудование, представленное в каталоге компании. Для каждого товара у нас выгодные цены с максимально точным и подробным описанием, а также полными характеристиками и собственными фотографиями."/>
+        </LinearLayout>
+    </ScrollView>
 
     <RelativeLayout
         android:id="@+id/layoutBottom"

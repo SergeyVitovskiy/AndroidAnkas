@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,15 +24,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SubcategoryWindow extends AppCompatActivity {
 
-    GridView gridSubcategory;
+    ExpandableHeightGridView gridSubcategory;
 
     static int idSelectCategory;
+    static String titleSelectCategory;
     ArrayList<Subcategory> subcategoryArrayList;
     SubcategoryAdapter subcategoryAdapter;
     RequestQueue requestQueue;
+
+    TextView textLoading;
+    Timer timer;
+    int tick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +51,16 @@ public class SubcategoryWindow extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         //Список категорий
         jsonParseSubcategory(idSelectCategory); //
-        gridSubcategory = (GridView) findViewById(R.id.gridSubcategory); // Обьявление GridView
+        gridSubcategory = (ExpandableHeightGridView) findViewById(R.id.gridSubcategory); // Обьявление GridView
+        gridSubcategory.setExpanded(true); // Расширение GridView
         gridSubcategory.setAdapter(subcategoryAdapter); // Присваиваем адаптер
+
+        TextView textNameWindow = (TextView) findViewById(R.id.textNameWindow);
+        textNameWindow.setText(titleSelectCategory);
         menuNavigation();// Меню навигации
         gridOnClick(); // Обработка нажатий
+
+        timerLoading(); // Таймер
     }
 
     // Меню навигации
@@ -86,12 +100,13 @@ public class SubcategoryWindow extends AppCompatActivity {
             }
         });
     }
-
+    // Нажатие на подкатегорию товара
     private void gridOnClick() {
         gridSubcategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 ProductWindow.idSelectSubcategory = SubcategoryAdapter.subcategoryArrayList.get(position).getId();
+                ProductWindow.titleSelectSubcategory = SubcategoryAdapter.subcategoryArrayList.get(position).getTitle();
                 Intent intent = new Intent(SubcategoryWindow.this, ProductWindow.class);
                 startActivity(intent);
             }
@@ -118,6 +133,8 @@ public class SubcategoryWindow extends AppCompatActivity {
                                 subcategoryArrayList.add(new Subcategory(id, category_id, title, image_url)); // Добавляем категорию
                             }
                             subcategoryAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                            timer.cancel();
+                            textLoading.setVisibility(View.GONE);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -126,8 +143,45 @@ public class SubcategoryWindow extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                timer.cancel();
+                textLoading.setVisibility(View.VISIBLE);
+                textLoading.setText("Нет подключения к Интернету!");
             }
         });
         requestQueue.add(request);
+    }
+
+    private void timerLoading(){
+        tick = 0;
+        timer = new Timer();
+        timer.schedule(new SubcategoryWindow.UpdateTimeTask(), 0, 300);
+        textLoading = (TextView) findViewById(R.id.textLoading);
+    }
+    //Timer
+    private class UpdateTimeTask extends TimerTask {
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    switch (tick) {
+                        case 0:
+                            textLoading.setText("Загрузка");
+                            break;
+                        case 1:
+                            textLoading.setText("Загрузка.");
+                            break;
+                        case 2:
+                            textLoading.setText("Загрузка..");
+                            break;
+                        case 3:
+                            textLoading.setText("Загрузка...");
+                            tick = -1;
+                            break;
+                    }
+                    tick++;
+                }
+            });
+        }
     }
 }

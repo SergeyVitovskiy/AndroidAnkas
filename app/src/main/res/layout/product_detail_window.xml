@@ -209,7 +209,108 @@
                     android:textColor="@color/colorGreen"
                     android:background="@color/colorWhite"
                     android:textSize="20sp"
-                    android:text="Отзывы"/>
+                    android:text="Оставить отзыв"/>
+                <LinearLayout
+                    android:id="@+id/layoutAddReview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:layout_below="@+id/text2">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGreen" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="28dp"
+                                android:paddingLeft="5dp"
+                                android:textSize="20sp"
+                                android:textColor="@color/colorGreen"
+                                android:gravity="center"
+                                android:text="Оценка: "/>
+
+                            <ImageView
+                                android:id="@+id/imageReview1"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:padding="2dp"
+                                app:srcCompat="@drawable/favourites" />
+                            <ImageView
+                                android:id="@+id/imageReview2"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:padding="2dp"
+                                app:srcCompat="@drawable/favourites" />
+                            <ImageView
+                                android:id="@+id/imageReview3"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:padding="2dp"
+                                app:srcCompat="@drawable/favourites" />
+                            <ImageView
+                                android:id="@+id/imageReview4"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:padding="2dp"
+                                app:srcCompat="@drawable/favourites" />
+                            <ImageView
+                                android:id="@+id/imageReview5"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:padding="2dp"
+                                app:srcCompat="@drawable/favourites" />
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/colorGreen" />
+                        <EditText
+                            android:id="@+id/textReview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:lines="5"
+                            android:gravity="top"
+                            android:inputType="textMultiLine"
+                            android:hint="Опишите товар"/>
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:textColor="@color/colorWhite"
+                            android:background="@color/colorGreen"
+                            android:text="Оставить отзыв"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_below="@+id/layoutAddReview"
+                    android:textColor="@color/colorGreen"
+                    android:background="@color/colorWhite"
+                    android:textSize="20sp"
+                    android:text="Отзывы покупателей"/>
+                <com.example.ankas.ExpandableHeightGridView
+                    android:id="@+id/gridReview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text3"/>
+                <TextView
+                    android:id="@+id/textMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/gridReview"
+                    android:gravity="center"
+                    android:text="Отзывов пока что нет"/>
             </RelativeLayout>
         </ScrollView>
     </RelativeLayout>

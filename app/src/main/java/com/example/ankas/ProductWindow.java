@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,15 +24,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ProductWindow extends AppCompatActivity {
 
-    GridView gridProduct;
+    ExpandableHeightGridView gridProduct;
 
     static int idSelectSubcategory;
+    static String titleSelectSubcategory;
     ArrayList<Product> productArrayList;
     ProductAdapter productAdapter;
     RequestQueue requestQueue;
+
+    TextView textLoading;
+    Timer timer;
+    int tick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +51,15 @@ public class ProductWindow extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         //Список категорий
         jsonParseProduct(idSelectSubcategory); // Парсинг
-        gridProduct = (GridView) findViewById(R.id.gridProduct); // Обьявление GridView
+        gridProduct = (ExpandableHeightGridView) findViewById(R.id.gridProduct); // Обьявление GridView
         gridProduct.setAdapter(productAdapter); // Присваиваем адаптер
+        gridProduct.setExpanded(true);
         menuNavigation(); // Меню
         gridOnClick(); // Обработка нажатий
-        
+
+        TextView textNameWindow = (TextView) findViewById(R.id.textNameWindow);
+        textNameWindow.setText(titleSelectSubcategory);
+        timerLoading(); // Таймер
     }
 
     private void gridOnClick() {
@@ -121,6 +133,8 @@ public class ProductWindow extends AppCompatActivity {
                                 productArrayList.add(new Product(article, title, price, brand, image_url, description, availability)); // Добавляем товар
                             }
                             productAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                            timer.cancel();
+                            textLoading.setVisibility(View.GONE);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -129,8 +143,45 @@ public class ProductWindow extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                timer.cancel();
+                textLoading.setVisibility(View.VISIBLE);
+                textLoading.setText("Нет подключения к Интернету!");
             }
         });
         requestQueue.add(request);
+    }
+
+    private void timerLoading(){
+        tick = 0;
+        timer = new Timer();
+        timer.schedule(new ProductWindow.UpdateTimeTask(), 0, 300);
+        textLoading = (TextView) findViewById(R.id.textLoading);
+    }
+    //Timer
+    private class UpdateTimeTask extends TimerTask {
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    switch (tick) {
+                        case 0:
+                            textLoading.setText("Загрузка");
+                            break;
+                        case 1:
+                            textLoading.setText("Загрузка.");
+                            break;
+                        case 2:
+                            textLoading.setText("Загрузка..");
+                            break;
+                        case 3:
+                            textLoading.setText("Загрузка...");
+                            tick = -1;
+                            break;
+                    }
+                    tick++;
+                }
+            });
+        }
     }
 }

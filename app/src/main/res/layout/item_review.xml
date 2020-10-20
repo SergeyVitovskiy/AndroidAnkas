@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:paddingLeft="5dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorGreen"
+                    android:gravity="center"
+                    android:text="Оценка: "/>
+
+                <ImageView
+                    android:id="@+id/imageReview1"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/favourites" />
+                <ImageView
+                    android:id="@+id/imageReview2"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/favourites" />
+                <ImageView
+                    android:id="@+id/imageReview3"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/favourites" />
+                <ImageView
+                    android:id="@+id/imageReview4"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/favourites" />
+                <ImageView
+                    android:id="@+id/imageReview5"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/favourites" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/colorGreen" />
+            <TextView
+                android:id="@+id/textReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="  Описание"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

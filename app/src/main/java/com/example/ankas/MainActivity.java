@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -17,6 +18,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ankas.Adapter.CategoryAdapter;
 import com.example.ankas.Class.Category;
+import com.example.ankas.Class.Subcategory;
 import com.example.ankas.Class.User;
 
 import org.json.JSONArray;
@@ -24,14 +26,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
     ExpandableHeightGridView gridCategory;
+    TextView textLoading;
+
+
+    Timer timer;
+    int tick;
 
     ArrayList<Category> categoryArrayList;
     CategoryAdapter categoryAdapter;
     RequestQueue requestQueue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         gridCategory.setAdapter(categoryAdapter); // Присваиваем адаптер
         gridOnClick(); // Обработка нажатий
         menuNavigation();
+
+        timerLoading(); // Таймер
     }
     // Меню навигации
     private void menuNavigation() {
@@ -91,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 SubcategoryWindow.idSelectCategory = CategoryAdapter.categoryArrayList.get(position).getId();
+                SubcategoryWindow.titleSelectCategory = CategoryAdapter.categoryArrayList.get(position).getTitle();
                 Intent intent = new Intent(MainActivity.this, SubcategoryWindow.class);
                 startActivity(intent);
             }
@@ -115,18 +128,56 @@ public class MainActivity extends AppCompatActivity {
                                 categoryArrayList.add(new Category(id,title,image_url)); // Добавляем категорию
                             }
                             categoryAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                            timer.cancel();
+                            textLoading.setVisibility(View.GONE);
                         } catch (JSONException e) {
                             e.printStackTrace();
-
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                timer.cancel();
+                textLoading.setVisibility(View.VISIBLE);
+                textLoading.setText("Нет подключения к Интернету!");
             }
         });
         requestQueue.add(request);
+    }
+
+    private void timerLoading(){
+        tick = 0;
+        timer = new Timer();
+        timer.schedule(new MainActivity.UpdateTimeTask(), 0, 300);
+        textLoading = (TextView) findViewById(R.id.textLoading);
+    }
+    //Timer
+    private class UpdateTimeTask extends TimerTask {
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    switch (tick) {
+                        case 0:
+                            textLoading.setText("Загрузка");
+                            break;
+                        case 1:
+                            textLoading.setText("Загрузка.");
+                            break;
+                        case 2:
+                            textLoading.setText("Загрузка..");
+                            break;
+                        case 3:
+                            textLoading.setText("Загрузка...");
+                            tick = -1;
+                            break;
+                    }
+                    tick++;
+                }
+            });
+        }
     }
 }
 
