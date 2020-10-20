@@ -379,10 +379,12 @@ public class ProductDetailWindow extends AppCompatActivity {
                                 String review = object.getString("review"); // Описание
                                 reviewArrayList.add(new Review(id_product, evalution, review)); // Добавляем товар
                             }
-                            if (id_product >=0 && id_product <= 0){  } else {
+                            if (reviewArrayList.size() != 0){
                                 textMessage.setVisibility(View.GONE);
+                                reviewAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                            }else {
+                                textMessage.setVisibility(View.VISIBLE);
                             }
-                            reviewAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
                         } catch (JSONException e) {
                             textMessage.setVisibility(View.VISIBLE);
                             e.printStackTrace();

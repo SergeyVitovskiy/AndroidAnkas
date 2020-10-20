@@ -41,6 +41,16 @@ public class UserRegistrationWindow extends AppCompatActivity {
         textSurname = (TextView) findViewById(R.id.textSurname);
         registration();
         menuNavigation(); // Меню навигации
+
+        // У меня есть профиль
+        TextView textRegistration = (TextView) findViewById(R.id.textRegistration);
+        textRegistration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserRegistrationWindow.this, UserAuthorizationWindow.class);
+                startActivity(intent);
+            }
+        });
     }
     // Обработка кнопки регистрация
     private void registration() {
@@ -151,6 +161,14 @@ public class UserRegistrationWindow extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(UserRegistrationWindow.this, MenuBrashWindow.class);
                 startActivity(intent);
+            }
+        });
+        // Переход в профиль или авторизацию
+        layoutHuman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent intent = new Intent(UserRegistrationWindow.this, UserAuthorizationWindow.class);
+                    startActivity(intent);
             }
         });
     }

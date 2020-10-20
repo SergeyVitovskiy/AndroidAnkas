@@ -40,7 +40,7 @@ public class SplashScreen extends AppCompatActivity {
 
         tick = 0;
         timer = new Timer();
-        timer.schedule(new UpdateTimeTask(), 0, 50);
+        timer.schedule(new UpdateTimeTask(), 0, 500);
     }
 
     private class UpdateTimeTask extends TimerTask {
@@ -51,22 +51,25 @@ public class SplashScreen extends AppCompatActivity {
                 public void run() {
                     switch (tick) {
                         case 0:
-                            textLoading.setText("Запуск SQLite...");
+                            textLoading.setText("Запуск лаунчера");
 
                             break;
                         case 1:
-                            textLoading.setText("Добавление данных SQLite...");
+                            textLoading.setText("Запрос на сервер");
                             break;
                         case 2:
-                            textLoading.setText("Обновление категорий...");
+                            textLoading.setText("Получение ответа");
                             break;
                         case 3:
-                            textLoading.setText("Обработка категорий...");
+                            textLoading.setText("Обработка ответа");
                             break;
                         case 4:
-                            textLoading.setText("Подключение к товарам...");
+                            textLoading.setText("Открытие.");
                             break;
                         case 5:
+                            textLoading.setText("Открытие..");
+                            break;
+                        case 6:
                             textLoading.setText("Открытие...");
                             break;
                         case 7:

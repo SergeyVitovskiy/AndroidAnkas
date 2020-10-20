@@ -84,6 +84,7 @@
             android:layout_marginLeft="10dp"
             android:text="@string/Я_не_помню_пароль"
             android:textColor="@color/colorGreen"
+            android:visibility="gone"
             android:textSize="14sp" />
 
         <Button
@@ -94,6 +95,9 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorGreen"
+            android:textSize="20sp"
             android:text="Войти" />
 
         <TextView

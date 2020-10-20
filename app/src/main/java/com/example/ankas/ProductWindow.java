@@ -132,9 +132,17 @@ public class ProductWindow extends AppCompatActivity {
                                 String availability= object.getString("availability");
                                 productArrayList.add(new Product(article, title, price, brand, image_url, description, availability)); // Добавляем товар
                             }
-                            productAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+
                             timer.cancel();
-                            textLoading.setVisibility(View.GONE);
+                            if (productArrayList.size() == 0)
+                            {
+                                textLoading.setVisibility(View.VISIBLE);
+                                textLoading.setText("В этой категории нет товаров!");
+                            }
+                            else {
+                                textLoading.setVisibility(View.GONE);
+                                productAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
