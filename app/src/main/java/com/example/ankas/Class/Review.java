@@ -1,18 +1,18 @@
 package com.example.ankas.Class;
 
 public class Review {
-    int id;
+    int id_product;
     int evalution;
     String review;
 
-    public Review(int id, int evalution, String review) {
-        this.id = id;
+    public Review(int id_product, int evalution, String review) {
+        this.id_product = id_product;
         this.evalution = evalution;
         this.review = review;
     }
 
-    public int getId() {
-        return id;
+    public int getId_product() {
+        return id_product;
     }
 
     public int getEvalution() {

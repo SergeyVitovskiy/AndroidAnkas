@@ -17,6 +17,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.ankas.Adapter.ProductAdapter;
+import com.example.ankas.Adapter.ReviewAdapter;
+import com.example.ankas.Class.Product;
+import com.example.ankas.Class.Review;
 import com.example.ankas.Class.User;
 import com.squareup.picasso.Picasso;
 
@@ -24,29 +28,149 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class ProductDetailWindow extends AppCompatActivity {
 
     static int idSelectProductDetail;
 
+    int evaluation = 1;
 
     Button buttonBuy;
+    TextView textReview;
+    TextView textMessage;
+
+    ArrayList<Review> reviewArrayList;
+    ReviewAdapter reviewAdapter;
     RequestQueue requestQueue;
+    ExpandableHeightGridView gridReview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_detail_window);
 
+        textMessage = (TextView) findViewById(R.id.textMessage); // сли нет товаров
         buttonBuy = (Button) findViewById(R.id.buttonBuy); // Кнопка добавить в корзину
         requestQueue = Volley.newRequestQueue(this);
 
-        jsonParseProductDetail(idSelectProductDetail); // Парсинг
+        reviewArrayList = new ArrayList<>(); // Создаем лист для подкатегорий
+        reviewAdapter = new ReviewAdapter(this, R.layout.item_review, reviewArrayList); // Создаем адаптер
+        requestQueue = Volley.newRequestQueue(this);
+
+        jsonParseProductDetail(idSelectProductDetail); // Парсинг товара
+        jsonParseReviews(idSelectProductDetail); // Парсинг отзывов
+        gridReview = (ExpandableHeightGridView) findViewById(R.id.gridReview); // Обьявление GridView
+        gridReview.setAdapter(reviewAdapter); // Присваиваем адаптер
+        gridReview.setExpanded(true); // Расширяем GridView
+
         checkBasket(); // Проверка коризны
         AddBasket(); // Добавление в корзину
         menuNavigation(); // Навигация
-
+        reviewsAdd();
     }
+    //Добавление отзыва
+    private void reviewsAdd(){
+        final ImageView imageReview1, imageReview2, imageReview3, imageReview4, imageReview5;
+        imageReview1 = (ImageView) findViewById(R.id.imageReview1);
+        imageReview2 = (ImageView) findViewById(R.id.imageReview2);
+        imageReview3 = (ImageView) findViewById(R.id.imageReview3);
+        imageReview4 = (ImageView) findViewById(R.id.imageReview4);
+        imageReview5 = (ImageView) findViewById(R.id.imageReview5);
 
+        imageReview1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageReview1.setImageResource(R.drawable.favourites_true);
+                imageReview2.setImageResource(R.drawable.favourites);
+                imageReview3.setImageResource(R.drawable.favourites);
+                imageReview4.setImageResource(R.drawable.favourites);
+                imageReview5.setImageResource(R.drawable.favourites);
+                evaluation = 1;
+            }
+        });
+        imageReview2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageReview1.setImageResource(R.drawable.favourites_true);
+                imageReview2.setImageResource(R.drawable.favourites_true);
+                imageReview3.setImageResource(R.drawable.favourites);
+                imageReview4.setImageResource(R.drawable.favourites);
+                imageReview5.setImageResource(R.drawable.favourites);
+                evaluation = 2;
+            }
+        });
+        imageReview3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageReview1.setImageResource(R.drawable.favourites_true);
+                imageReview2.setImageResource(R.drawable.favourites_true);
+                imageReview3.setImageResource(R.drawable.favourites_true);
+                imageReview4.setImageResource(R.drawable.favourites);
+                imageReview5.setImageResource(R.drawable.favourites);
+                evaluation = 3;
+            }
+        });
+        imageReview4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageReview1.setImageResource(R.drawable.favourites_true);
+                imageReview2.setImageResource(R.drawable.favourites_true);
+                imageReview3.setImageResource(R.drawable.favourites_true);
+                imageReview4.setImageResource(R.drawable.favourites_true);
+                imageReview5.setImageResource(R.drawable.favourites);
+                evaluation = 4;
+            }
+        });
+        imageReview5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageReview1.setImageResource(R.drawable.favourites_true);
+                imageReview2.setImageResource(R.drawable.favourites_true);
+                imageReview3.setImageResource(R.drawable.favourites_true);
+                imageReview4.setImageResource(R.drawable.favourites_true);
+                imageReview5.setImageResource(R.drawable.favourites_true);
+                evaluation = 5;
+            }
+        });
+
+        Button buttonEnter = (Button) findViewById(R.id.buttonEnter);
+        textReview = (TextView) findViewById(R.id.textReview);
+        buttonEnter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!User.login.equals("") && !User.login.equals("Null")){
+                    String url = "http://anndroidankas.h1n.ru/php/reviews_add.php?id_product=" + idSelectProductDetail + "&evalution=" + evaluation + "&review=" + textReview.getText().toString();
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    JSONArray jsonArray = null;
+                                    try {
+                                        jsonArray = response.getJSONArray("ANSWER"); // Массив данных
+                                        JSONObject object = jsonArray.getJSONObject(0); // Получение первого массива
+                                        String answer = object.getString("answer");
+                                        Toast.makeText(getApplicationContext(), answer, Toast.LENGTH_SHORT).show(); // Сообщение полученное с сервера
+                                        reviewArrayList.add(new Review(idSelectProductDetail, evaluation, textReview.getText().toString())); // Добавляем товар
+                                        reviewAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                        }
+                    });
+                    requestQueue.add(request);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Вы не авторизированы!", Toast.LENGTH_SHORT).show(); // Сообщение полученное с сервера
+                }
+            }
+        });
+    }
+    //Проверка есть ли продукт в корзине
     private void checkBasket() {
         String url = "http://anndroidankas.h1n.ru/php/basket_product_info.php?user_login=" + User.login + "&product_id=" + idSelectProductDetail;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -75,7 +199,6 @@ public class ProductDetailWindow extends AppCompatActivity {
         });
         requestQueue.add(request);
     }
-
     //Добавление в корзину
     private void AddBasket() {
         buttonBuy.setOnClickListener(new View.OnClickListener() {
@@ -159,7 +282,7 @@ public class ProductDetailWindow extends AppCompatActivity {
             }
         });
     }
-
+    //Загрузить товар
     private void jsonParseProductDetail(int position) {
         final String url = "http://anndroidankas.h1n.ru/php/product_detail.php?product=" + position;
         final TextView textArticle = (TextView) findViewById(R.id.textArticle); // Артикул
@@ -234,6 +357,42 @@ public class ProductDetailWindow extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+            }
+        });
+        requestQueue.add(request);
+    }
+    //Загрузка отзывов
+    int id_product = 0;
+    private void jsonParseReviews(int position){
+        String url = "http://anndroidankas.h1n.ru/php/reviews.php?id_product=" + position;
+        reviewArrayList.clear(); // Отчищаем лист с отзывами
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("REVIEWS");
+                            for (int i = 0; i < jsonArray.length();i++){
+                                JSONObject object = jsonArray.getJSONObject(i);
+                                id_product = object.getInt("id_product"); // id продукта
+                                int evalution = object.getInt("evalution"); // Кол-во звезд
+                                String review = object.getString("review"); // Описание
+                                reviewArrayList.add(new Review(id_product, evalution, review)); // Добавляем товар
+                            }
+                            if (id_product >=0 && id_product <= 0){  } else {
+                                textMessage.setVisibility(View.GONE);
+                            }
+                            reviewAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                        } catch (JSONException e) {
+                            textMessage.setVisibility(View.VISIBLE);
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                textMessage.setVisibility(View.VISIBLE);
             }
         });
         requestQueue.add(request);

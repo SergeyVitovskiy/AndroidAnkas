@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="vertical"
+                android:background="#00000000">
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="26sp"
+                    android:textColor="@color/colorGreen"
+                    android:text="Отзыв"/>
+
+                <View
+                    android:id="@+id/viewLinear1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/text1"
+                    android:background="@color/colorGreen" />
+                <LinearLayout
+                    android:id="@+id/layout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/viewLinear1"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="28dp"
+                        android:paddingLeft="5dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorGreen"
+                        android:gravity="center"
+                        android:text="Оценка: "/>
+
+                    <ImageView
+                        android:id="@+id/imageReview1"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:padding="2dp"
+                        app:srcCompat="@drawable/favourites_true" />
+                    <ImageView
+                        android:id="@+id/imageReview2"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:padding="2dp"
+                        app:srcCompat="@drawable/favourites" />
+                    <ImageView
+                        android:id="@+id/imageReview3"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:padding="2dp"
+                        app:srcCompat="@drawable/favourites" />
+                    <ImageView
+                        android:id="@+id/imageReview4"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:padding="2dp"
+                        app:srcCompat="@drawable/favourites" />
+                    <ImageView
+                        android:id="@+id/imageReview5"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:padding="2dp"
+                        app:srcCompat="@drawable/favourites" />
+                </LinearLayout>
+                <View
+                    android:id="@+id/viewLinear2"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/layout1"
+                    android:background="@color/colorGreen"
+                    android:scrollbars="vertical"/>
+
+                <TextView
+                    android:id="@+id/textReview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/viewLinear2"
+                    android:text="Коментарий"
+                    android:textSize="18sp" />
+                <View
+                    android:id="@+id/viewLinear3"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/textReview"
+                    android:background="@color/colorGreen" />
+
+            </RelativeLayout>
+</RelativeLayout>

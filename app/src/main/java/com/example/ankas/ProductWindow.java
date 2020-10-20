@@ -110,7 +110,7 @@ public class ProductWindow extends AppCompatActivity {
             }
         });
     }
-
+    //Парсинг товаров
     private void jsonParseProduct(int position) {
         String url = "http://anndroidankas.h1n.ru/php/product.php?subcategory="+position;
 
@@ -150,7 +150,7 @@ public class ProductWindow extends AppCompatActivity {
         });
         requestQueue.add(request);
     }
-
+    // Таймер загрузки
     private void timerLoading(){
         tick = 0;
         timer = new Timer();
