@@ -46,7 +46,6 @@ public class UserEditAccount extends AppCompatActivity {
         textLogin.setText(User.login);
         textLogin.setEnabled(false);
         textEmail.setText(User.email);
-        textPassword.setText(User.password);
 
         Button buttonEnter = (Button) findViewById(R.id.buttonEnter); // Сохранить изменение
         buttonEnter.setOnClickListener(new View.OnClickListener() {

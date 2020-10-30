@@ -314,11 +314,17 @@
                     android:layout_below="@+id/layoutAddReview"
                     android:gravity="center"
                     android:text="Отзывов пока что нет"/>
+                <View
+                    android:id="@+id/viewLinear3"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/textMessage"
+                    android:background="@color/colorGreen" />
                 <TextView
                     android:id="@+id/text10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textMessage"
+                    android:layout_below="@+id/viewLinear3"
                     android:gravity="center"
                     android:text=" * Технические характеристики и комплект поставки могут быть изменены производителем без предварительного уведомления.\n\n * Сообщить об ошибке описания или характеристик\n товара можно в отзывах"/>
             </RelativeLayout>

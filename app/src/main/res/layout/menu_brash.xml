@@ -57,6 +57,20 @@
                     android:layout_below="@+id/viewLinear2"
                     android:layout_marginTop="0dp"
                     android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/textNameWindow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorGreen"
+                        android:background="@color/colorWhite"
+                        android:textSize="20sp"
+                        android:paddingLeft="5dp"
+                        android:text="Информация о организации"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/imageLogo"
+                        android:background="@color/colorGreen" />
 
                     <RelativeLayout
                         android:id="@+id/layoutAdress"

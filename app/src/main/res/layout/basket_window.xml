@@ -24,71 +24,90 @@
             android:background="@color/colorGreen" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/layoutBottom"
+        android:layout_above="@+id/layoutOrder"
         android:layout_below="@+id/layoutTop"
-        android:background="@color/colorLightGrey">
-
-        <GridView
-            android:id="@+id/gridProductBasket"
+        android:background="@color/colorLightGrey"
+        android:layout_marginBottom="0dp">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/layoutOrder" />
-
-        <TextView
-            android:id="@+id/textMessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="70dp"
-            android:textSize="20sp"
-            android:visibility="gone"
-            android:text="У вас нет товаров в корзине"/>
-
-        <RelativeLayout
-            android:id="@+id/layoutOrder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="2dp">
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/textNameWindow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorGreen"
+                android:background="@color/colorWhite"
+                android:textSize="20sp"
+                android:paddingLeft="5dp"
+                android:text="Корзина"/>
             <View
-                android:id="@+id/viewLinear2"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
                 android:background="@color/colorGreen" />
 
+            <com.example.ankas.ExpandableHeightGridView
+                android:id="@+id/gridProductBasket"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/layoutOrder" />
+
             <TextView
-                android:id="@+id/textOrderAmount"
-                android:layout_width="240dp"
-                android:layout_height="28dp"
-                android:layout_below="@+id/viewLinear2"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="2dp"
-                android:paddingLeft="5dp"
-                android:text="Сумма: 0 ₽"
-                android:textColor="@color/colorGreen"
-                android:textSize="20sp"/>
+                android:id="@+id/textMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:gravity="center"
+                android:text="У вас нет товаров в корзине!"
+                android:textSize="20sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
 
-            <Button
-                android:layout_width="100dp"
-                android:layout_height="28dp"
-                android:layout_below="@+id/viewLinear2"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@+id/textOrderAmount"
-                android:background="@color/colorGreen"
-                android:text="Заказать"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp" />
-        </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/layoutOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layoutBottom"
+        android:layout_marginBottom="2dp">
+        <View
+            android:id="@+id/viewLinear2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGreen" />
 
+        <TextView
+            android:id="@+id/textOrderAmount"
+            android:layout_width="240dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/viewLinear2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="5dp"
+            android:text="Сумма: 0 ₽"
+            android:textColor="@color/colorGreen"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/buttonEnter"
+            android:layout_width="100dp"
+            android:layout_height="28dp"
+            android:layout_below="@+id/viewLinear2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/textOrderAmount"
+            android:background="@color/colorGreen"
+            android:text="Заказать"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
     </RelativeLayout>
-
     <RelativeLayout
         android:id="@+id/layoutBottom"
         android:layout_width="wrap_content"

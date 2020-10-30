@@ -62,7 +62,7 @@ public class CategoryAdapter extends BaseAdapter {
         }
         Category category = categoryArrayList.get(position);
         holder.textTitle.setText(category.getTitle());
-
+        //Получение картинки с сервера
         Picasso.with(context)
                 .load("http://anndroidankas.h1n.ru/imageAnkas/imageCategory/" + category.getImage_url())
                 .placeholder(R.drawable.logo_ico)

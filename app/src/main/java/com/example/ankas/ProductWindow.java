@@ -112,7 +112,7 @@ public class ProductWindow extends AppCompatActivity {
     }
     //Парсинг товаров
     private void jsonParseProduct(int position) {
-        String url = "http://anndroidankas.h1n.ru/php/product.php?subcategory="+position;
+        String url = "http://anndroidankas.h1n.ru/php/product.php?subcategory=" + position;
 
         productArrayList.clear(); // Отчищаем лист с категориями
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,

@@ -44,7 +44,8 @@
                 <ImageView
                     android:id="@+id/imageUser"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop"
                     android:background="@color/colorWhite"
                     app:srcCompat="@drawable/human" />
 
@@ -65,13 +66,16 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imageUser"
                     android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGreen" />
                     <TextView
                         android:id="@+id/textMyOrder"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="2dp"
-
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="5dp"
                         android:background="@color/colorWhite"
                         android:textColor="@color/colorBlack"
                         android:textSize="22sp"
@@ -81,26 +85,25 @@
                         android:id="@+id/textPromoCode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="2dp"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="5dp"
                         android:background="@color/colorWhite"
                         android:textColor="@color/colorBlack"
                         android:textSize="22sp"
                         android:text="Ввести промокод"/>
 
-
                     <TextView
                         android:id="@+id/textAccount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="2dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="5dp"
                         android:background="@color/colorWhite"
                         android:textColor="@color/colorBlack"
                         android:textSize="22sp"
-                        android:text="Аккаунт"/>
+                        android:text="Изменить данные профиля"/>
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:id="@+id/layoutAdmin"
@@ -118,10 +121,11 @@
                         android:background="@color/colorGreen" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Панель администратора"
                         android:textSize="24sp"
+                        android:background="@color/colorWhite"
                         android:textColor="@color/colorGreen"/>
                     <View
                         android:id="@+id/viewLinear2"
@@ -133,34 +137,45 @@
                         android:id="@+id/textAdminOrders"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:padding="2dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="5dp"
                         android:layout_below="@+id/textSupportService"
                         android:background="@color/colorWhite"
-                        android:text="Посмотреть заказы"
+                        android:text="Посмотреть заказы клиентов"
                         android:textColor="@color/colorBlack"
                         android:textSize="22sp" />
 
                 </LinearLayout>
-
-                <View
-                    android:id="@+id/viewLinear3"
-                    android:layout_width="match_parent"
-                    android:layout_below="@+id/layoutAdmin"
-                    android:layout_height="2dp"
-                    android:background="@color/colorGreen" />
-                <TextView
-                    android:id="@+id/textExit"
+                <LinearLayout
+                    android:id="@+id/layoutExit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:layout_below="@+id/viewLinear3"
-                    android:background="@color/colorWhite"
-                    android:textColor="#9A0101"
-                    android:gravity="center"
-                    android:textSize="22sp"
-                    android:text="Выйти"/>
+                    android:layout_below="@+id/layoutAdmin"
+                    android:orientation="vertical">
+                    <View
+                    android:id="@+id/viewLinear3"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorGreen" />
+                    <TextView
+                        android:id="@+id/textExit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_below="@+id/viewLinear3"
+                        android:background="@color/colorWhite"
+                        android:textColor="#9A0101"
+                        android:gravity="center"
+                        android:textSize="22sp"
+                        android:text="Выйти"/>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorGreen"
+                        android:layout_below="@+id/textExit"/>
+                </LinearLayout>
             </RelativeLayout>
         </ScrollView>
     </RelativeLayout>

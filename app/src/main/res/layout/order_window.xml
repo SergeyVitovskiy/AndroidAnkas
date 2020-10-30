@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorWhite">
+
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:layout_margin="2dp"
+            app:srcCompat="@drawable/logo" />
+
+        <View
+            android:id="@+id/viewLinear"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/imageLogo"
+            android:background="@color/colorGreen" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layoutBottom"
+        android:layout_below="@+id/layoutTop"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="Данные покупателя" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/textTel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:hint="Телефон"/>
+                <EditText
+                    android:id="@+id/textEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:hint="E-mail"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="Выберите способ получения"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/buttonPickup"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGreen"
+                    android:textColor="@color/colorWhite"
+                    android:text="Самовывоз"/>
+                <Button
+                    android:id="@+id/buttonDelivery"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorGreen"
+                    android:textColor="@color/colorWhite"
+                    android:text="Доставка"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutPickup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/colorWhite">
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text7"
+                    android:paddingLeft="5dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:text="гор. Челябиснк\nул. Газизуллина, 2Б\n Склад, Офис, Пункт выдачи\nРежим работы: ПН-ПТ с 9:00 до 18:00" />
+
+                <ImageView
+                    android:id="@+id/imageMaps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/text4"
+                    android:layout_marginTop="0dp"
+                    android:layout_weight="2"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/maps" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutDelivery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Введите адрес доствки"/>
+                <EditText
+                    android:id="@+id/textAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:maxLines="1"
+                    android:textColor="@color/colorBlack"
+                    android:hint="Адрес"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="Выберите способы оплаты"
+                android:background="@color/colorWhite"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite">
+                <Button
+                    android:id="@+id/buttonUponReceipt"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLightGreen"
+                    android:textColor="@color/colorWhite"
+                    android:text="При получении"/>
+                <Button
+                    android:id="@+id/buttonOnline"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorGreen"
+                    android:textColor="@color/colorWhite"
+                    android:text="Онлайн"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutOnline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Введите данные карты"/>
+                <EditText
+                    android:id="@+id/textCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:maxLines="1"
+                    android:hint="0000 0000 0000 0000"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_weight="1"
+                        android:text="Срок действия"/>
+                    <EditText
+                        android:id="@+id/textDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorBlack"
+                        android:maxLines="1"
+                        android:hint="01/20"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="20sp"
+                        android:text="PIN"/>
+                    <EditText
+                        android:id="@+id/textPIN"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorBlack"
+                        android:hint="000"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutUponReceipt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:background="@color/colorWhite"
+                    android:textSize="20sp"
+                    android:text="В офисе можно оплатить как наличными, так и картой Visa и МИР"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="Оставьте комментарий к заказу"
+                android:background="@color/colorWhite"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <EditText
+                android:id="@+id/textComment"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="top"
+                android:textSize="20sp"
+                android:hint="Комментарий"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <TextView
+                android:id="@+id/textOrderAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorGreen"
+                android:text="Общая сумма заказа: 0 ₽"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/imageLogo"
+                android:background="@color/colorGreen" />
+            <Button
+                android:id="@+id/buttonEnter"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_margin="5dp"
+                android:background="@color/colorGreen"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp"
+                android:text="Офирмить заказ"/>
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite">
+        <View
+            android:id="@+id/viewLinear1"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorGreen" />
+
+        <LinearLayout
+            android:id="@+id/layoutNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/viewLinear1">
+
+            <LinearLayout
+                android:id="@+id/layoutShop"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    app:srcCompat="@drawable/shop" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutBasket"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/rounded">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    app:srcCompat="@drawable/basket" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutHuman"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/human" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutMenuBrash"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/menu_bars" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

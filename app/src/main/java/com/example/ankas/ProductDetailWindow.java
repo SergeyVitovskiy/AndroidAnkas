@@ -139,7 +139,7 @@ public class ProductDetailWindow extends AppCompatActivity {
         buttonEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!User.login.equals("") && !User.login.equals("Null")){
+                if (!User.login.equals("") && !User.login.equals("Null")){ // Проверка авторизированного пользователя
                     String url = "http://anndroidankas.h1n.ru/php/reviews_add.php?id_product=" + idSelectProductDetail + "&evalution=" + evaluation + "&review=" + textReview.getText().toString();
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                             new Response.Listener<JSONObject>() {
@@ -149,7 +149,7 @@ public class ProductDetailWindow extends AppCompatActivity {
                                     try {
                                         jsonArray = response.getJSONArray("ANSWER"); // Массив данных
                                         JSONObject object = jsonArray.getJSONObject(0); // Получение первого массива
-                                        String answer = object.getString("answer");
+                                        String answer = object.getString("answer"); // Получение ответа с сервера
                                         Toast.makeText(getApplicationContext(), answer, Toast.LENGTH_SHORT).show(); // Сообщение полученное с сервера
                                         reviewArrayList.add(new Review(idSelectProductDetail, evaluation, textReview.getText().toString())); // Добавляем товар
                                         reviewAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
