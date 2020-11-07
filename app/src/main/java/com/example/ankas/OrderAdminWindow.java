@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -76,6 +77,8 @@ public class OrderAdminWindow  extends AppCompatActivity {
                                 orderAdminArrayList.add(new ProductOrderAdmin(title_product, price_product, quantity, name, surname, user_tel, user_email, status)); // Добавляем товары в лист
                             }
                             productOrderAdminAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                            ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
+                            scrollView.smoothScrollTo(0,0);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -99,6 +100,8 @@ public class UserMyOrder extends AppCompatActivity {
                                 }
                                 textMessage.setVisibility(View.GONE);
                                 productOrderAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                                ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
+                                scrollView.smoothScrollTo(0,0);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
