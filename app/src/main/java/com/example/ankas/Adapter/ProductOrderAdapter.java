@@ -58,14 +58,9 @@ public class ProductOrderAdapter extends BaseAdapter {
         ImageView image;
         TextView textTitle; // Название
         TextView textPrice; // Цена
-        TextView textDescription;  // Описание
-        TextView textManufacturer; // Бренд
-        TextView textQuantityBasket; // Кол-во заказываемого товара
-        TextView textAvailability; // Товар в надичии или нет
-
-        LinearLayout layoutMinus;
-        LinearLayout layoutPlus;
-        ImageView imageTrash;
+        TextView textQuantity; // Кол-во
+        TextView textComment;  // Коментарий
+        TextView textStatus; // Статус
     }
 
     @Override
@@ -79,19 +74,27 @@ public class ProductOrderAdapter extends BaseAdapter {
             holder.image = (ImageView) row.findViewById(R.id.image);
             holder.textTitle = (TextView) row.findViewById(R.id.textTitle);
             holder.textPrice = (TextView) row.findViewById(R.id.textPrice);
-            holder.textDescription = (TextView) row.findViewById(R.id.textDescription);
-            holder.textManufacturer = (TextView) row.findViewById(R.id.textManufacturer);
-            holder.textQuantityBasket = (TextView) row.findViewById(R.id.textQuantityBasket);
-            holder.textAvailability = (TextView) row.findViewById(R.id.textAvailability);
+            holder.textQuantity = (TextView) row.findViewById(R.id.textQuantity);
+            holder.textComment = (TextView) row.findViewById(R.id.textComment);
+            holder.textStatus = (TextView) row.findViewById(R.id.textStatus);
 
-            holder.layoutMinus = (LinearLayout) row.findViewById(R.id.layoutMinus);
-            holder.layoutPlus = (LinearLayout) row.findViewById(R.id.layoutPlus);
-            holder.imageTrash = (ImageView) row.findViewById(R.id.imageTrash);
             row.setTag(holder);
         } else {
             holder = (ProductOrderAdapter.ViewHolder) row.getTag();
         }
         final ProductOrder productOrder = productOrderArrayList.get(position);
+
+        holder.textTitle.setText(productOrder.getTitle_product());
+        holder.textPrice.setText(productOrder.getPrice_product() + " ₽");
+        holder.textQuantity.setText("Кол-во: " + productOrder.getQuantity());
+        holder.textComment.setText( "Комментарий к заказу: " + productOrder.getComment());
+        holder.textStatus.setText(productOrder.getStatus());
+
+        Picasso.with(context)
+                .load("http://anndroidankas.h1n.ru/imageAnkas/imageProduct/" + productOrder.getImage_url())
+                .placeholder(R.drawable.logo_ico)
+                .error(R.drawable.error)
+                .into(holder.image);
 
         return row;
     }

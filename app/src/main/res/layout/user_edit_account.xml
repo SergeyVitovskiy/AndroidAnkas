@@ -73,6 +73,9 @@
                     android:layout_below="@+id/text1"
                     android:layout_marginTop="0dp"
                     android:textSize="20sp"
+                    android:maxLength="60"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890.@"
                     android:hint="Имя" />
                 <View
                     android:layout_width="match_parent"
@@ -102,6 +105,9 @@
                     android:layout_below="@+id/text3"
                     android:layout_marginTop="0dp"
                     android:textSize="20sp"
+                    android:maxLength="60"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890.@"
                     android:hint="Фамилия" />
                 <View
                     android:layout_width="match_parent"
@@ -131,6 +137,9 @@
                     android:layout_below="@+id/text4"
                     android:layout_marginTop="0dp"
                     android:textSize="20sp"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890"
                     android:hint="Логин" />
                 <View
                     android:layout_width="match_parent"
@@ -160,6 +169,9 @@
                     android:layout_below="@+id/text5"
                     android:layout_marginTop="0dp"
                     android:textSize="20sp"
+                    android:maxLength="60"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890.@"
                     android:hint="E-mail" />
                 <View
                     android:layout_width="match_parent"
@@ -189,6 +201,9 @@
                     android:layout_below="@+id/text6"
                     android:layout_marginTop="0dp"
                     android:textSize="20sp"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890!"
                     android:password="true"
                     android:hint="Пароль" />
                 <EditText
@@ -201,6 +216,9 @@
                     android:layout_marginTop="0dp"
                     android:textSize="20sp"
                     android:password="true"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890!"
                     android:hint="Повтроите пароль" />
                 <View
                     android:layout_width="match_parent"

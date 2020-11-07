@@ -70,6 +70,24 @@ public class UserAuthorizedWindow extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        textMyOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserAuthorizedWindow.this, UserMyOrder.class);
+                startActivity(intent);
+            }
+        });
+
+        // Админ //
+        TextView textAdminOrders = (TextView) findViewById(R.id.textAdminOrders);
+        textAdminOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserAuthorizedWindow.this, OrderAdminWindow.class);
+                startActivity(intent);
+            }
+        });
     }
     // Меню навигации
     private void menuNavigation() {

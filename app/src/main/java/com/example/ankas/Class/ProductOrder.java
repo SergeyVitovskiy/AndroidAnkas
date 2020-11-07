@@ -1,28 +1,22 @@
 package com.example.ankas.Class;
 
 public class ProductOrder {
-    int id;
     int article;
     String title_product;
-    String image_url;
-    int quantity;
     int price_product;
-    String status;
+    int quantity;
     String comment;
+    String status;
+    String image_url;
 
-    public ProductOrder(int id, int article, String title_product, String image_url, int quantity, int price_product, String status, String comment) {
-        this.id = id;
+    public ProductOrder(int article, String title_product, int price_product, int quantity, String comment, String status, String image_url) {
         this.article = article;
         this.title_product = title_product;
-        this.image_url = image_url;
-        this.quantity = quantity;
         this.price_product = price_product;
-        this.status = status;
+        this.quantity = quantity;
         this.comment = comment;
-    }
-
-    public int getId() {
-        return id;
+        this.status = status;
+        this.image_url = image_url;
     }
 
     public int getArticle() {
@@ -33,23 +27,23 @@ public class ProductOrder {
         return title_product;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public int getPrice_product() {
+        return price_product;
     }
 
     public int getQuantity() {
         return quantity;
     }
 
-    public int getPrice_product() {
-        return price_product;
+    public String getComment() {
+        return comment;
     }
 
     public String getStatus() {
         return status;
     }
 
-    public String getComment() {
-        return comment;
+    public String getImage_url() {
+        return image_url;
     }
 }

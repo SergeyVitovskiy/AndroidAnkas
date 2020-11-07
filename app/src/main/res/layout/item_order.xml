@@ -79,13 +79,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_below="@+id/textQuantity"
-                    android:text="Комментарий" />
+                    android:text="Комментарий к заказу: " />
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textComment">
 
                     <TextView
+                        android:id="@+id/textStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Заказ на стадии обработки"

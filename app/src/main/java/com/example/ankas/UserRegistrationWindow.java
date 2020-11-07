@@ -59,76 +59,84 @@ public class UserRegistrationWindow extends AppCompatActivity {
         buttonEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!textLogin.getText().toString().equals("")) {
-                    if (!textEmail.getText().toString().equals("")) {
-                        if (!textPassword.getText().toString().equals("") && !textPasswordTuo.getText().toString().equals("")) {
-                            if (textPassword.getText().toString().equals(textPasswordTuo.getText().toString())) {
-                                String url = "http://anndroidankas.h1n.ru/php/user_registration.php?login=" + textLogin.getText().toString() + "&password=" + textPassword.getText().toString() +
-                                        "&email=" + textEmail.getText().toString() + "&name=" + textName.getText().toString() + "&surname=" + textSurname.getText().toString(); // GET запрос
-                                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                                        new Response.Listener<JSONObject>() {
-                                            @Override
-                                            public void onResponse(JSONObject response) {
-                                                try {
-                                                    JSONArray jsonArray = response.getJSONArray("ANSWER"); // Массив данных
-                                                    JSONObject object = jsonArray.getJSONObject(0); // Получение первого массива
-                                                    String answer = object.getString("answer");
-                                                    Toast.makeText(getApplicationContext(), answer, Toast.LENGTH_SHORT).show(); // Сообщение полученное с сервера
-                                                    if (!answer.equals("Пользователь с таким логином уже есть!")) {
-                                                        //Получение данных о пользоватле
-                                                        String url = "http://anndroidankas.h1n.ru/php/user.php?login=" + textLogin.getText() + "&password=" + textPassword.getText();
-                                                        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                                                                new Response.Listener<JSONObject>() {
+                if (!textName.getText().toString().equals("")) {
+                    if (!textSurname.getText().toString().equals("")) {
+                        if (!textLogin.getText().toString().equals("")) {
+                            if (!textEmail.getText().toString().equals("")) {
+                                if (!textPassword.getText().toString().equals("") && !textPasswordTuo.getText().toString().equals("")) {
+                                    if (textPassword.getText().toString().equals(textPasswordTuo.getText().toString())) {
+                                        String url = "http://anndroidankas.h1n.ru/php/user_registration.php?login=" + textLogin.getText().toString() + "&password=" + textPassword.getText().toString() +
+                                                "&email=" + textEmail.getText().toString() + "&name=" + textName.getText().toString() + "&surname=" + textSurname.getText().toString(); // GET запрос
+                                        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                                                new Response.Listener<JSONObject>() {
+                                                    @Override
+                                                    public void onResponse(JSONObject response) {
+                                                        try {
+                                                            JSONArray jsonArray = response.getJSONArray("ANSWER"); // Массив данных
+                                                            JSONObject object = jsonArray.getJSONObject(0); // Получение первого массива
+                                                            String answer = object.getString("answer");
+                                                            Toast.makeText(getApplicationContext(), answer, Toast.LENGTH_SHORT).show(); // Сообщение полученное с сервера
+                                                            if (!answer.equals("Пользователь с таким логином уже есть!")) {
+                                                                //Получение данных о пользоватле
+                                                                String url = "http://anndroidankas.h1n.ru/php/user.php?login=" + textLogin.getText() + "&password=" + textPassword.getText();
+                                                                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                                                                        new Response.Listener<JSONObject>() {
+                                                                            @Override
+                                                                            public void onResponse(JSONObject response) {
+                                                                                try {
+                                                                                    JSONArray jsonArray = response.getJSONArray("USER");
+                                                                                    JSONObject object = jsonArray.getJSONObject(0);
+                                                                                    User.login = object.getString("login");
+                                                                                    User.password = object.getString("password");
+                                                                                    User.group = object.getString("groups");
+                                                                                    User.image_url = object.getString("image_url");
+                                                                                    User.surname = object.getString("surname");
+                                                                                    User.name = object.getString("name");
+                                                                                    User.email = object.getString("email");
+                                                                                    User.telephone = object.getString("telephone");
+                                                                                    //После получения
+                                                                                    Intent intent = new Intent(UserRegistrationWindow.this, UserAuthorizedWindow.class);
+                                                                                    startActivity(intent);
+                                                                                } catch (JSONException e) {
+                                                                                    e.printStackTrace();
+                                                                                }
+                                                                            }
+                                                                        }, new Response.ErrorListener() {
                                                                     @Override
-                                                                    public void onResponse(JSONObject response) {
-                                                                        try {
-                                                                            JSONArray jsonArray = response.getJSONArray("USER");
-                                                                            JSONObject object = jsonArray.getJSONObject(0);
-                                                                            User.login = object.getString("login");
-                                                                            User.password = object.getString("password");
-                                                                            User.group = object.getString("groups");
-                                                                            User.image_url = object.getString("image_url");
-                                                                            User.surname = object.getString("surname");
-                                                                            User.name = object.getString("name");
-                                                                            User.email = object.getString("email");
-                                                                            User.telephone = object.getString("telephone");
-                                                                            //После получения
-                                                                            Intent intent = new Intent(UserRegistrationWindow.this, UserAuthorizedWindow.class);
-                                                                            startActivity(intent);
-                                                                        } catch (JSONException e) {
-                                                                            e.printStackTrace();
-                                                                        }
+                                                                    public void onErrorResponse(VolleyError error) {
+                                                                        error.printStackTrace();
                                                                     }
-                                                                }, new Response.ErrorListener() {
-                                                            @Override
-                                                            public void onErrorResponse(VolleyError error) {
-                                                                error.printStackTrace();
+                                                                });
+                                                                requestQueue.add(request);
                                                             }
-                                                        });
-                                                        requestQueue.add(request);
+                                                        } catch (JSONException e) {
+                                                            e.printStackTrace();
+                                                        }
                                                     }
-                                                } catch (JSONException e) {
-                                                    e.printStackTrace();
-                                                }
+                                                }, new Response.ErrorListener() {
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {
+                                                error.printStackTrace();
                                             }
-                                        }, new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        error.printStackTrace();
+                                        });
+                                        requestQueue.add(request);
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Пароли не совпадают!", Toast.LENGTH_SHORT).show();
                                     }
-                                });
-                                requestQueue.add(request);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Вы не заполнили поле с паролем!", Toast.LENGTH_SHORT).show();
+                                }
                             } else {
-                                Toast.makeText(getApplicationContext(), "Пароли не совпадают!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Вы не заполнили поле E-mail!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "Вы не заполнили поле с паролем!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Вы не заполнили поле Логин!", Toast.LENGTH_SHORT).show();
                         }
-                    } else{
-                        Toast.makeText(getApplicationContext(), "Вы не заполнили поле E-mail!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Вы не заполнили поле имя!", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Вы не заполнили поле Логин!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Вы не заполнили поле фамилия!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

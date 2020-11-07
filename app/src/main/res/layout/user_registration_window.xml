@@ -52,17 +52,22 @@
                     android:gravity="center"
                     android:textColor="@color/colorBlack"
                     android:text="Создайте учетную записть для получения\nбольших возможностей!"/>
-                <EditText
-                    android:id="@+id/textLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/text2"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="20sp"
-                    android:hint="Логин"/>
-                <EditText
+
+            <EditText
+                android:id="@+id/textLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginRight="10dp"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890"
+                android:hint="Логин"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:textSize="20sp" />
+
+            <EditText
                     android:id="@+id/textEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -71,6 +76,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:textSize="20sp"
+                    android:maxLength="60"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890.@"
                     android:hint="E-mail"/>
                 <EditText
                     android:id="@+id/textName"
@@ -81,6 +89,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:textSize="20sp"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ"
                     android:hint="Имя"/>
                 <EditText
                     android:id="@+id/textSurname"
@@ -91,6 +102,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:textSize="20sp"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ"
                     android:hint="Фамилия"/>
                 <EditText
                     android:id="@+id/textPassword"
@@ -102,6 +116,9 @@
                     android:layout_marginLeft="10dp"
                     android:textSize="20sp"
                     android:password="true"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890!"
                     android:hint="Пароль"/>
 
                 <EditText
@@ -113,6 +130,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:textSize="20sp"
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZйцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ1234567890!"
                     android:password="true"
                     android:hint="Повторите пароль"/>
 

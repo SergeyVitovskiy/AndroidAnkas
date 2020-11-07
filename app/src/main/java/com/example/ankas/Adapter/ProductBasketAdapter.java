@@ -56,7 +56,7 @@ public class ProductBasketAdapter extends BaseAdapter {
         return position;
     }
 
-    private class ViewHolder{
+    private class ViewHolder {
         ImageView image;
         TextView textTitle; // Название
         TextView textPrice; // Цена
@@ -145,7 +145,7 @@ public class ProductBasketAdapter extends BaseAdapter {
         holder.layoutPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Integer.parseInt(finalHolder.textQuantityBasket.getText().toString()) < ProductBasketAdapter.productBasketArrayList.get(position).getQuantity()){
+                if (Integer.parseInt(finalHolder.textQuantityBasket.getText().toString()) < ProductBasketAdapter.productBasketArrayList.get(position).getQuantity()) {
                     int quantity = ProductBasketAdapter.productBasketArrayList.get(position).getQuantity_basket() + 1;
                     ProductBasketAdapter.productBasketArrayList.get(position).setQuantity_basket(quantity);
                     finalHolder.textQuantityBasket.setText("" + quantity);
@@ -219,7 +219,7 @@ public class ProductBasketAdapter extends BaseAdapter {
             for (int i = 0; i < productBasketArrayList.size(); i++) {
                 BasketWindow.orderAmount += productBasketArrayList.get(i).getQuantity_basket() * Double.parseDouble(productBasketArrayList.get(i).getPrice()); // Сумма заказа
             }
-            BasketWindow.textOrderAmount.setText("Сумма: " + String.format("%.0f",BasketWindow.orderAmount) + " ₽");
         }
+        BasketWindow.textOrderAmount.setText("Сумма: " + String.format("%.0f", BasketWindow.orderAmount) + " ₽");
     }
 }

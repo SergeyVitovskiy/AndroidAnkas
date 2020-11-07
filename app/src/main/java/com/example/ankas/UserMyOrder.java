@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -49,18 +50,17 @@ public class UserMyOrder extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.basket_window);
+        setContentView(R.layout.user_my_orders);
 
-        gridMyOrder = (ExpandableHeightGridView) findViewById(R.id.gridMyOrder); // Обьявление GridView
-        textMessage = (TextView) findViewById(R.id.textMessage); // У вас нет товара в корзине
-
+        textMessage = (TextView) findViewById(R.id.textMessage); // У вас нет заказанных товаров
         productOrderArrayList = new ArrayList<>(); // Создаем лист для подкатегорий
         productOrderAdapter = new ProductOrderAdapter(this, R.layout.item_order, productOrderArrayList); // Создаем адаптер
         requestQueue = Volley.newRequestQueue(this);
         //Список категорий
-        jsonParseProductBasket(); // Получить категории товара и вывести
-        gridMyOrder.setAdapter(productOrderAdapter); // Присваиваем адаптер
+        jsonParseMyOrder(); // Получить категории товара и вывести
+        gridMyOrder = (ExpandableHeightGridView) findViewById(R.id.gridMyOrder); // Обьявление GridView
         gridMyOrder.setExpanded(true);
+        gridMyOrder.setAdapter(productOrderAdapter); // Присваиваем адаптер
         gridViewClick(); // Обработка нажатий в grid view
         menuNavigation(); // Навигация нижней панели
     }
@@ -69,44 +69,42 @@ public class UserMyOrder extends AppCompatActivity {
         gridMyOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long row) {
-                ProductDetailWindow.idSelectProductDetail = ProductBasketAdapter.productBasketArrayList.get(position).getArticle();
+                ProductDetailWindow.idSelectProductDetail = ProductOrderAdapter.productOrderArrayList.get(position).getArticle();
                 Intent intent = new Intent(UserMyOrder.this, ProductDetailWindow.class);
                 startActivity(intent);
             }
         });
     }
     // Парсинг корзины
-    private void jsonParseProductBasket() {
-        /*if (User.login != "" && User.login != "Null") {
-            String url = "http://anndroidankas.h1n.ru/php/basket_product.php?user_login=" + User.login;
-
-            productBasketArrayList.clear(); // Отчищаем лист с категориями
+    private void jsonParseMyOrder() {
+        String url = "http://anndroidankas.h1n.ru/php/orders.php?user_login=" + User.login;
+        productOrderArrayList.clear(); // Отчищаем лист с категориями
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                JSONArray jsonArray = response.getJSONArray("BASKET_PRODUCT");
+                                JSONArray jsonArray = response.getJSONArray("ORDERS");
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject object = jsonArray.getJSONObject(i);
-                                    int article = object.getInt("article"); // Индификатор
-                                    String title = object.getString("title_product"); // Название
-                                    String price = object.getString("price"); // Цена
-                                    String brand = object.getString("country") + ", " + object.getString("title_brand"); // Бренд
-                                    String image_url = object.getString("image_url"); // Изобраджение
-                                    String description = object.getString("description"); // Описание
-                                    int quantity = object.getInt("quantity"); // Кол-во товара
-                                    int quantity_basket = object.getInt("quantity_basket"); // Кол-во товара в корзине
-                                    productBasketArrayList.add(new ProductBasket(article, title, price, brand, image_url, description, quantity, quantity_basket)); // Добавляем продукты в лист
+                                    int article = object.getInt("article");
+                                    String title_product = object.getString("title_product");
+                                    int price_product = object.getInt("price_product");
+                                    int quantity = object.getInt("quantity");
+                                    String comment = object.getString("comment");
+                                    String status = object.getString("status");
+                                    String image_url = object.getString("image_url");
+
+                                    productOrderArrayList.add(new ProductOrder(article, title_product, price_product, quantity, comment, status, image_url)); // Добавляем товары в лист
                                 }
                                 textMessage.setVisibility(View.GONE);
-                                productBasketAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                                productOrderAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            if (productBasketArrayList.size() == 0) {
+                            if (productOrderArrayList.size() == 0) {
                                 BasketWindow.textMessage.setVisibility(View.VISIBLE);
-                                BasketWindow.textMessage.setText("У вас нет товаров в корзине");
+                                BasketWindow.textMessage.setText("У вас нет заказов");
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -116,10 +114,6 @@ public class UserMyOrder extends AppCompatActivity {
                 }
             });
             requestQueue.add(request);
-        } else {
-            textMessage.setText("Вы не авторизированы");
-            textMessage.setVisibility(View.VISIBLE);
-        }*/
     }
     // Меню навигации
     private void menuNavigation() {
@@ -128,6 +122,14 @@ public class UserMyOrder extends AppCompatActivity {
         layoutBasket = (LinearLayout) findViewById(R.id.layoutBasket); // Корзина
         layoutHuman = (LinearLayout) findViewById(R.id.layoutHuman); // Пользователь
         layoutMenuBrash = (LinearLayout) findViewById(R.id.layoutMenuBrash); // Меню
+
+        layoutBasket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserMyOrder.this, BasketWindow.class);
+                startActivity(intent);
+            }
+        });
 
         layoutShop.setOnClickListener(new View.OnClickListener() {
             @Override
