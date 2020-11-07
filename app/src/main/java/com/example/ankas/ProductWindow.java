@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,7 +54,7 @@ public class ProductWindow extends AppCompatActivity {
         jsonParseProduct(idSelectSubcategory); // Парсинг
         gridProduct = (ExpandableHeightGridView) findViewById(R.id.gridProduct); // Обьявление GridView
         gridProduct.setAdapter(productAdapter); // Присваиваем адаптер
-        gridProduct.setExpanded(true);
+        gridProduct.setExpanded(true); // Расиширение GridView
         menuNavigation(); // Меню
         gridOnClick(); // Обработка нажатий
 
@@ -132,7 +133,6 @@ public class ProductWindow extends AppCompatActivity {
                                 String availability= object.getString("availability");
                                 productArrayList.add(new Product(article, title, price, brand, image_url, description, availability)); // Добавляем товар
                             }
-
                             timer.cancel();
                             if (productArrayList.size() == 0)
                             {
@@ -140,8 +140,9 @@ public class ProductWindow extends AppCompatActivity {
                                 textLoading.setText("В этой категории нет товаров!");
                             }
                             else {
-                                textLoading.setVisibility(View.GONE);
                                 productAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                                timer.cancel();
+                                textLoading.setVisibility(View.GONE);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

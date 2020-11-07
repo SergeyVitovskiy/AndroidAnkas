@@ -50,6 +50,7 @@
                 android:layout_height="2dp"
                 android:layout_below="@+id/imageLogo"
                 android:background="@color/colorGreen" />
+
             <com.example.ankas.ExpandableHeightGridView
                 android:id="@+id/gridCategory"
                 android:layout_width="match_parent"

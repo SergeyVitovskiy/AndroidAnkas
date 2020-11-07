@@ -82,17 +82,6 @@
                         android:text="Мои заказы"/>
 
                     <TextView
-                        android:id="@+id/textPromoCode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:paddingLeft="5dp"
-                        android:background="@color/colorWhite"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="22sp"
-                        android:text="Ввести промокод"/>
-
-                    <TextView
                         android:id="@+id/textAccount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

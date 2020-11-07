@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ public class ProductDetailWindow extends AppCompatActivity {
 
     static int idSelectProductDetail;
 
-    int evaluation = 1;
+    int evaluation = 5;
 
     Button buttonBuy;
     TextView textReview;
@@ -57,17 +58,17 @@ public class ProductDetailWindow extends AppCompatActivity {
         reviewArrayList = new ArrayList<>(); // Создаем лист для подкатегорий
         reviewAdapter = new ReviewAdapter(this, R.layout.item_review, reviewArrayList); // Создаем адаптер
         requestQueue = Volley.newRequestQueue(this);
-
         jsonParseProductDetail(idSelectProductDetail); // Парсинг товара
-        jsonParseReviews(idSelectProductDetail); // Парсинг отзывов
+
         gridReview = (ExpandableHeightGridView) findViewById(R.id.gridReview); // Обьявление GridView
         gridReview.setAdapter(reviewAdapter); // Присваиваем адаптер
         gridReview.setExpanded(true); // Расширяем GridView
+        jsonParseReviews(idSelectProductDetail); // Парсинг отзывов
 
         checkBasket(); // Проверка коризны
         AddBasket(); // Добавление в корзину
         menuNavigation(); // Навигация
-        reviewsAdd();
+        reviewsAdd(); // Добавление отзыва
     }
     //Добавление отзыва
     private void reviewsAdd(){
@@ -152,7 +153,14 @@ public class ProductDetailWindow extends AppCompatActivity {
                                         String answer = object.getString("answer"); // Получение ответа с сервера
                                         Toast.makeText(getApplicationContext(), answer, Toast.LENGTH_SHORT).show(); // Сообщение полученное с сервера
                                         reviewArrayList.add(new Review(idSelectProductDetail, evaluation, textReview.getText().toString())); // Добавляем товар
-                                        reviewAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
+                                        reviewAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление отзыва товара
+                                        textReview.setText("");
+                                        imageReview1.setImageResource(R.drawable.favourites_true);
+                                        imageReview2.setImageResource(R.drawable.favourites_true);
+                                        imageReview3.setImageResource(R.drawable.favourites_true);
+                                        imageReview4.setImageResource(R.drawable.favourites_true);
+                                        imageReview5.setImageResource(R.drawable.favourites_true);
+                                        evaluation = 5;
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -381,6 +389,8 @@ public class ProductDetailWindow extends AppCompatActivity {
                             }
                             if (reviewArrayList.size() != 0){
                                 textMessage.setVisibility(View.GONE);
+                                ScrollView scrollView = (ScrollView) findViewById(R.id.scrollView);
+                                scrollView.smoothScrollTo(0,0);
                                 reviewAdapter.notifyDataSetChanged(); // Отправка в адаптер для добавление категорий товара
                             }else {
                                 textMessage.setVisibility(View.VISIBLE);

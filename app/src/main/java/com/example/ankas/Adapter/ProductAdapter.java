@@ -83,7 +83,7 @@ public class ProductAdapter extends BaseAdapter {
         }
         Product product = productArrayList.get(position);
         holder.textTitle.setText(product.getTitle());
-        holder.textPrice.setText(product.getPrice() + " ₽");
+        holder.textPrice.setText("Цена:" + product.getPrice() + " ₽");
         holder.textDescription.setText("    Описание: " + product.getDescription());
         holder.textManufacturer.setText(product.getBrand());
         holder.textAvailability.setText(product.getAvailability());

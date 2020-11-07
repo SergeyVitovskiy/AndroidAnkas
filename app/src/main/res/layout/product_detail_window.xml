@@ -31,6 +31,7 @@
         android:layout_below="@+id/layoutTop"
         android:background="@color/colorLightGrey">
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RelativeLayout
@@ -154,7 +155,7 @@
                     android:textSize="16sp"
                     android:background="@color/colorWhite"
                     android:layout_below="@+id/text"
-                    android:text="Описание: " />
+                    android:text="Описание: \n\n\n\n\n\n\n" />
                 <TextView
                     android:id="@+id/textExpandDescription"
                     android:layout_width="match_parent"
@@ -187,7 +188,7 @@
                     android:textSize="16sp"
                     android:background="@color/colorWhite"
                     android:layout_below="@+id/text1"
-                    android:text="Характеристики: " />
+                    android:text="Характеристики: \n\n\n\n\n\n\n" />
                 <TextView
                     android:id="@+id/textExpandFeatures"
                     android:layout_width="match_parent"
@@ -242,25 +243,25 @@
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:padding="2dp"
-                            app:srcCompat="@drawable/favourites" />
+                            app:srcCompat="@drawable/favourites_true" />
                         <ImageView
                             android:id="@+id/imageReview3"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:padding="2dp"
-                            app:srcCompat="@drawable/favourites" />
+                            app:srcCompat="@drawable/favourites_true" />
                         <ImageView
                             android:id="@+id/imageReview4"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:padding="2dp"
-                            app:srcCompat="@drawable/favourites" />
+                            app:srcCompat="@drawable/favourites_true" />
                         <ImageView
                             android:id="@+id/imageReview5"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:padding="2dp"
-                            app:srcCompat="@drawable/favourites" />
+                            app:srcCompat="@drawable/favourites_true" />
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
@@ -305,14 +306,13 @@
                         android:numColumns="1"
                         android:stretchMode="columnWidth"
                         android:scrollbars="vertical" />
-
                 </LinearLayout>
                 <TextView
                     android:id="@+id/textMessage"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_below="@+id/layoutAddReview"
                     android:gravity="center"
+                    android:layout_below="@+id/layoutAddReview"
                     android:text="Отзывов пока что нет"/>
                 <View
                     android:id="@+id/viewLinear3"
@@ -326,7 +326,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/viewLinear3"
                     android:gravity="center"
-                    android:text=" * Технические характеристики и комплект поставки могут быть изменены производителем без предварительного уведомления.\n\n * Сообщить об ошибке описания или характеристик\n товара можно в отзывах"/>
+                    android:text=" * Технические характеристики и комплект поставки могут быть изменены производителем без предварительного уведомления.\n\n * Сообщить об ошибке описания или характеристик\n товара можно написав отзыв"/>
             </RelativeLayout>
         </ScrollView>
     </RelativeLayout>
