@@ -73,7 +73,7 @@ public class ProductOrderAdminAdapter  extends BaseAdapter {
         }
         final ProductOrderAdmin productOrderAdmin = productOrderAdminArrayList.get(position);
 
-        holder.textTitle.setText(productOrderAdmin.getName() + " " + productOrderAdmin.getSurname());
+        holder.textTitle.setText(productOrderAdmin.getTitle_product());
         holder.textPrice.setText("Цена товара: " + productOrderAdmin.getPrice_product() + " ₽");
         holder.textQuantity.setText("Кол-во: " + productOrderAdmin.getQuantity());
         holder.textUserName.setText(productOrderAdmin.getName() + " " + productOrderAdmin.getSurname());

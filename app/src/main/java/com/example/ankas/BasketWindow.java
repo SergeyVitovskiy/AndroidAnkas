@@ -69,8 +69,12 @@ public class BasketWindow extends AppCompatActivity {
         buttonEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BasketWindow.this, OrderWindow.class);
-                startActivity(intent);
+                if (productBasketArrayList.size() != 0) {
+                    Intent intent = new Intent(BasketWindow.this, OrderWindow.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Корзина пуста", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
